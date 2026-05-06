@@ -5,6 +5,7 @@
 **Sources**:
 - Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf
 - Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
 
 **Last updated**: 2026-05-06
 
@@ -26,6 +27,8 @@ MSP-Podcast v1.10 is described as about 238 hours of audio from more than 1400 s
 
 Prabhu et al. 2023 describes MSP-Podcast v1.10 as about 166 hours of podcast audio annotated with arousal, valence, and dominance, and uses only arousal for conversion (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf). The duration mismatch between the two descriptions should be treated as source-version or preprocessing dependent unless verified (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf; source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf).
 
+[[diffevc]] also uses MSP-Podcast, training on v1.10 and evaluating on v1.11 as an in-the-wild any-to-any EVC setting with unseen speakers and reference emotions (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This adds a categorical-emotion counterpart to the arousal-focused in-the-wild SEC sources already in the wiki (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
 ## Caution
 
 In-the-wild data increases ecological validity, but it makes causal interpretation harder because emotion, speaker, channel, and context can be entangled (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf). EmoConv-Diff addresses this with separate encoders, but speaker-emotion disentanglement should still be evaluated directly.
@@ -41,3 +44,6 @@ In-the-wild data increases ecological validity, but it makes causal interpretati
 - [[arousal-based-emotion-control]]
 - [[non-parallel-voice-conversion]]
 - [[evaluation-metrics-for-voice-conversion]]
+- [[diffevc]]
+- [[expressive-guidance]]
+- [[mutual-information-disentanglement]]

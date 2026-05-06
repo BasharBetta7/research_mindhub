@@ -21,6 +21,12 @@
 - Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
 - Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf
 - Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
+- Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf
+- Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
+- Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
+- Didi+et+al.pdf
 
 **Last updated**: 2026-05-06
 
@@ -88,6 +94,18 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 
 [[einet]] is direct EVC evidence for controllable emotional intensity and explicitly adds an identity maintainer to reduce speaker identity loss under intensity manipulation (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). However, it reports naturalness, emotion similarity, F0, duration, and SER accuracy rather than a standard speaker-similarity metric, so it still does not provide a speaker-emotion Pareto frontier (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
 
+[[diffevc]] is direct any-to-any EVC evidence because it conditions a diffusion decoder on separate content, speaker, and emotion representations, then explicitly reduces speaker-emotion dependence with [[mutual-information-disentanglement]] (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). Its ablation table reports emotion conversion accuracy and speaker embedding cosine similarity together; on MSP-Podcast, adding the full disentanglement loss improves emotion conversion accuracy from 0.701 to 0.812 while SECS changes from 0.821 to 0.757, and expressive guidance reports 0.852 ECA with 0.746 SECS (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This is stronger tradeoff evidence than emotion-only evaluation, but it is still not a full Pareto frontier because guidance strength is not systematically swept against speaker similarity (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
+[[zest]] is also direct evidence because it performs zero-shot audio-to-audio emotion transfer while preserving source speaker identity, and it evaluates content, target emotion, and source speaker preservation together (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf). Its full system reports higher emotion transfer accuracy than the baselines while maintaining high speaker classification accuracy in the ESD settings, but the unseen-speaker subjective setting remains harder, so it supports the existence of the tradeoff rather than removing it (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf).
+
+[[textless-speech-emotion-conversion]] is important conceptually because it defines emotion conversion as preserving speaker identity and lexical content while changing emotion, then decomposes speech into units, duration, F0, speaker, and emotion factors (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf). The paper also reports that a d-vector speaker representation retained source-emotion prosody and gave inferior disentanglement, which is useful evidence that speaker representations can carry emotion-related prosodic leakage (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf).
+
+[[zhou-2022-evc-theory-esd]] is foundational but mostly conceptual tradeoff evidence: it defines EVC as emotion conversion under preservation of linguistic information and speaker identity, and it argues that emotion uses both spectrum and prosody rather than spectrum alone (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). Its ESD reference experiments evaluate quality and emotion similarity but do not report a separate speaker-similarity metric, so it should not be overread as a measured speaker-drift study (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
+[[sgevc]] is direct method evidence because it explicitly represents linguistic content, speaker identity, and emotion attribute as separate variables in a semi-supervised generative model (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf). It reports strong emotion control with little labeled data, including 84.1% emotion classification accuracy with 1% supervision, but it does not report SECS, sMOS, EER, or another speaker-side metric after conversion, so it is not a complete tradeoff measurement (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf).
+
+[[seq2seq-cyclegan-evc]] reports speaker similarity alongside MCD, F0 RMSE, SSIM, naturalness MOS, and emotion-similarity MOS, making it relevant to tradeoff measurement (source: Didi+et+al.pdf). However, it should be cited cautiously because its description of ESD as having over 300 speakers conflicts with the canonical 20-speaker description in [[zhou-2022-evc-theory-esd]] (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
 [[voicebox]] and [[tacotron]] should not be used as speaker-emotion tradeoff evidence because they are general speech generation or TTS backbone papers rather than EVC studies (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf; source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf). Voicebox is especially tempting to overcite because it transfers audio style from context, but the paper explicitly states that it cannot independently control voice, speaking style, emotion, and acoustic condition (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf).
 
 ## Related pages
@@ -130,3 +148,16 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 - [[vad-based-emotion-intensity]]
 - [[voicebox]]
 - [[tacotron]]
+- [[diffevc]]
+- [[expressive-guidance]]
+- [[mutual-information-disentanglement]]
+- [[zest]]
+- [[zero-shot-audio-to-audio-emotion-transfer]]
+- [[textless-speech-emotion-conversion]]
+- [[textless-emotion-conversion]]
+- [[zhou-2022-evc-theory-esd]]
+- [[esd-dataset]]
+- [[sgevc]]
+- [[semi-supervised-evc]]
+- [[seq2seq-cyclegan-evc]]
+- [[seq2seq-cyclegan-refinement]]

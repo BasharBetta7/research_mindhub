@@ -9,6 +9,7 @@
 - Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf
 - Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf
 - Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
 
 **Last updated**: 2026-05-06
 
@@ -34,6 +35,8 @@ Diffusion-based emotion conversion uses a reverse diffusion process to generate 
 
 EmoConv-Diff uses diffusion to avoid requiring parallel source-target emotion pairs during training (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf). This is important for [[in-the-wild-emotion-conversion]], where clean parallel emotional references are not available (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf).
 
+[[diffevc]] extends the diffusion EVC line to any-to-any conversion with reference emotion, source speaker preservation, [[mutual-information-disentanglement]], and [[expressive-guidance]] (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This makes diffusion relevant not only as a non-parallel generator but also as a controllable sampling framework where speaker and emotion conditions can be pushed apart during inference (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
 ## Related pages
 
 - [[emoconv-diff]]
@@ -49,3 +52,6 @@ EmoConv-Diff uses diffusion to avoid requiring parallel source-target emotion pa
 - [[hierarchical-emotion-control]]
 - [[e3-tts]]
 - [[end-to-end-diffusion-tts]]
+- [[diffevc]]
+- [[expressive-guidance]]
+- [[mutual-information-disentanglement]]

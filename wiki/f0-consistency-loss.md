@@ -23,9 +23,12 @@ Zhou et al. show that F0 is also relevant to [[emotion-intensity-control]]: stro
 
 Zhou et al. 2020 model F0 with [[cwt-f0-modelling]], arguing that a single F0 value or simple linear F0 transformation does not characterize hierarchical speech prosody well enough for emotional voice conversion (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf).
 
+For a broader synthesis of why F0 extraction is used in VC and EVC, see [[f0-pitch-contour-in-voice-conversion]].
+
 ## Related pages
 
 - [[starganv2-vc]]
 - [[evaluation-metrics-for-voice-conversion]]
 - [[emotion-intensity-control]]
 - [[cwt-f0-modelling]]
+- [[f0-pitch-contour-in-voice-conversion]]

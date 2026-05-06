@@ -26,6 +26,12 @@
 - Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
 - Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf
 - Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
+- Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf
+- Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
+- Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
+- Didi+et+al.pdf
 
 **Last updated**: 2026-05-06
 
@@ -83,6 +89,18 @@ For [[prabhu-2023-in-the-wild-sec]], in-the-wild SEC evaluation uses SER mean-sq
 
 For [[einet]], EVC evaluation uses MCD, log-F0 RMSE, DDUR, external SER classification accuracy, MOS naturalness, and subjective emotion similarity (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). These metrics capture acoustic distortion, prosody, rhythm, emotion recognizability, and subjective quality, but the main reported table does not include a standard speaker-similarity metric (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
 
+For [[diffevc]], any-to-any EVC evaluation uses UTMOS, DNSMOS, SECS, emotion conversion accuracy, emotion retrieval accuracy, MOS, neutral MOS, speaker MOS, and subjective emotion conversion accuracy (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This metric set is important because it places speaker similarity and emotion conversion in the same table, making it more useful for tradeoff analysis than emotion-only evaluation (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
+For [[zest]], zero-shot audio-to-audio emotion transfer evaluation uses CER for content preservation, emotion conversion accuracy for target-emotion transfer, speaker classification accuracy for source-speaker preservation, and subjective MOS, emotion-similarity MOS, and speaker-similarity MOS (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf). This is a clean three-axis setup for emotional voice conversion: content, emotion, and speaker identity are all checked separately (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf).
+
+For [[textless-speech-emotion-conversion]], evaluation uses MOS for quality, emotion mean-opinion classification for perceived emotion, and ASR WER/PER for lexical preservation (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf). The paper's decomposition ablation is also an evaluation caution, because changing only the emotion label performs poorly compared with changing F0, duration, and translated units (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf).
+
+For [[zhou-2022-evc-theory-esd]], the ESD reference EVC experiments use MCD for objective spectral distortion, MOS for speech quality, and XAB preference for emotion similarity (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). The MOS instruction includes linguistic information and speaker identity preservation as part of speech quality, but the paper does not report a separate speaker-similarity metric in those reference experiments (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
+For [[sgevc]], evaluation uses emotion classification accuracy for the latent emotion variable, MOS naturalness, emotion-similarity MOS, and MCD (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf). This records emotion control and speech quality well, but it leaves speaker preservation under-measured because no dedicated speaker similarity score is reported (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf).
+
+For [[seq2seq-cyclegan-evc]], evaluation uses MCD, F0 RMSE, SSIM, x-vector speaker similarity, naturalness MOS, and emotional-similarity MOS (source: Didi+et+al.pdf). This is a stronger metric set for the [[speaker-emotion-tradeoff]] than emotion-only evaluation, but the source also conflicts with the canonical ESD metadata, so its dataset description and quantitative claims should be verified before being used as central evidence (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
 For [[voicebox]], general speech generation evaluation uses WER, audio-context similarity, Frechet Speech Distance, QMOS, and SMOS (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf). Voicebox's critique of signal-level metrics is relevant to speech generation evaluation because deterministic metrics can unfairly penalize valid diverse samples (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf).
 
 For [[tacotron]], general TTS evaluation uses 5-scale MOS for naturalness and ablation analysis of attention alignment and post-processing behavior (source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf). This is historical TTS evaluation context and not EVC evaluation evidence (source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf).
@@ -118,6 +136,10 @@ The new emotional TTS sources strengthen a broader caution: speaker metrics can 
 [[tf-mamba-ser]] strengthens the SER-proxy side of evaluation, but it does not remove the gap between automatic recognition and human-perceived emotional quality (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf). If a future EVC system reports TF-Mamba-based emotion accuracy, it should still be paired with listening tests and speaker-side metrics (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf).
 
 The newest direct EVC intensity sources sharpen the same warning: [[prabhu-2023-in-the-wild-sec]] and [[einet]] evaluate controllable emotion conversion, but neither reports a full speaker-similarity sweep over emotion intensity (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf; source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
+
+[[diffevc]] partially addresses this gap by reporting SECS and emotion accuracy under expressive guidance, but a guidance-scale curve would still be needed to claim a measured intensity-speaker frontier (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). [[zest]] similarly evaluates speaker preservation and emotion transfer together, but its settings compare tasks and ablations rather than continuously sweeping emotion strength (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf).
+
+The new semi-supervised and hybrid sources sharpen the same caution: [[sgevc]] has explicit speaker and emotion variables but lacks a speaker metric, while [[seq2seq-cyclegan-evc]] has a speaker metric but contains a dataset-metadata contradiction (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf; source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
 
 ## Related pages
 
@@ -169,3 +191,14 @@ The newest direct EVC intensity sources sharpen the same warning: [[prabhu-2023-
 - [[text-guided-speech-infilling]]
 - [[tacotron]]
 - [[seq2seq-tts]]
+- [[diffevc]]
+- [[expressive-guidance]]
+- [[zest]]
+- [[zero-shot-audio-to-audio-emotion-transfer]]
+- [[textless-speech-emotion-conversion]]
+- [[textless-emotion-conversion]]
+- [[zhou-2022-evc-theory-esd]]
+- [[esd-dataset]]
+- [[sgevc]]
+- [[semi-supervised-evc]]
+- [[seq2seq-cyclegan-evc]]

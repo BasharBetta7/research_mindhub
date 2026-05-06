@@ -13,6 +13,12 @@
 - Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
 - Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
 - Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
+- Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf
+- Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
+- Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
+- Didi+et+al.pdf
 
 **Last updated**: 2026-05-06
 
@@ -39,6 +45,18 @@ Speaker identity evaluation in EVC asks whether emotion conversion preserves, ch
 [[prabhu-2023-in-the-wild-sec]] uses a WavLM speaker verification embedding as the speaker representation while converting arousal, so it explicitly designs for speaker preservation (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf). However, its reported evaluation focuses on SER arousal errors and WVMOS, so it does not directly measure speaker similarity after conversion (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf).
 
 [[einet]] includes an identity maintainer to reduce speaker identity loss during controllable EVC, especially by constraining F0 and voicing behavior (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). Its main reported table still lacks standard speaker-similarity metrics such as SECS, sMOS, or EER, so it is partial rather than complete evidence for identity preservation (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
+
+[[diffevc]] evaluates speaker identity with SECS while also reporting emotion conversion accuracy, emotion retrieval accuracy, UTMOS, DNSMOS, and subjective ratings (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This makes it a stronger identity-evaluation source than papers that report only emotion accuracy, although its guidance mechanism still needs a controlled speaker-similarity sweep for intensity-specific conclusions (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
+[[zest]] evaluates speaker identity with source-speaker classification accuracy and subjective speaker-similarity MOS while transferring emotion from a reference utterance (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf). This metric design is directly aligned with EVC identity preservation because the expected speaker is the source speaker, not the emotional reference speaker (source: Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf).
+
+[[textless-speech-emotion-conversion]] treats speaker identity preservation as part of the task definition, but its fixed speaker lookup table limits unseen-speaker evaluation (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf). Its report that d-vector conditioning retained source-emotion prosody is a useful caution: speaker embeddings can preserve identity while also carrying unwanted emotional prosody (source: Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf).
+
+[[zhou-2022-evc-theory-esd]] treats speaker identity preservation as part of the EVC task definition and as part of subjective speech-quality assessment in its ESD reference experiments (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). It is not a strong speaker-identity evaluation source by itself because the reference experiments do not separate speaker similarity from naturalness and linguistic quality (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
+[[sgevc]] explicitly conditions the generative model on observed speaker identity and a latent emotion attribute, making it relevant to identity-preserving method design (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf). Its evaluation is incomplete for speaker identity because it reports MOS, emotion-similarity MOS, MCD, and emotion classification accuracy, but not a dedicated speaker-similarity score (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf).
+
+[[seq2seq-cyclegan-evc]] reports x-vector cosine similarity between original and converted speech as a speaker identity metric (source: Didi+et+al.pdf). The proposed hybrid model reports speaker similarity 0.88 compared with 0.83 for Seq2Seq-only and 0.81 for CycleGAN-only, but this result should be treated cautiously because the same paper has an ESD metadata contradiction (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
 
 [[starganv2-vc]] contributes speaker-identity evidence through speaker classification and source-classifier ablations, but its main reported emotional conversion evidence is weaker than its speaker-conversion evaluation (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf). Removing the adversarial source classifier reduces speaker classification accuracy from 96.20% to 63.90% while pMOS and CER stay similar, showing that speaker identity metrics can move independently from naturalness and intelligibility metrics (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf).
 
@@ -72,3 +90,13 @@ The wiki does not yet contain a study that directly sweeps target emotion intens
 - [[einet]]
 - [[ssl-disentanglement-for-sec]]
 - [[vad-based-emotion-intensity]]
+- [[diffevc]]
+- [[expressive-guidance]]
+- [[mutual-information-disentanglement]]
+- [[zest]]
+- [[zero-shot-audio-to-audio-emotion-transfer]]
+- [[textless-speech-emotion-conversion]]
+- [[zhou-2022-evc-theory-esd]]
+- [[sgevc]]
+- [[semi-supervised-evc]]
+- [[seq2seq-cyclegan-evc]]

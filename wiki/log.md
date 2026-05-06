@@ -8,6 +8,31 @@
 
 ---
 
+**Timestamp**: [06-05-2026 22:37]
+
+- Ingested `Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf`.
+- Ingested `Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf`.
+- Ingested `Didi+et+al.pdf`.
+- Created source summary pages [[zhou-2022-evc-theory-esd]], [[sgevc]], and [[seq2seq-cyclegan-evc]].
+- Created concept pages [[esd-dataset]], [[emotional-speech-databases]], [[semi-supervised-evc]], [[end-to-end-generative-evc]], and [[seq2seq-cyclegan-refinement]].
+- Updated existing pages with extra emphasis on source methods and the emotion-speaker tradeoff: [[speaker-emotion-tradeoff]], [[speaker-identity-evaluation-in-evc]], [[speaker-disentanglement]], [[evaluation-metrics-for-voice-conversion]], [[f0-pitch-contour-in-voice-conversion]], [[sequence-to-sequence-emotional-voice-conversion]], [[cyclegan-evc]], [[parallel-emotional-speech-data]], [[non-parallel-voice-conversion]], [[emotional-speech-conversion]], and [[index]].
+- Updated `../sources.bib` with entries for the newly ingested raw PDFs.
+
+**Timestamp**: [06-05-2026 22:22]
+
+- Ingested `Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf`; the PDF title is DiffEVC and the wiki records the filename/title mismatch.
+- Ingested `Dutta and Ganapathy - 2024 - Zero Shot Audio to Audio Emotion Transfer With Speaker Disentanglement.pdf`.
+- Ingested `Kreuk et al. - 2022 - Textless Speech Emotion Conversion using Discrete and Decomposed Representations.pdf`.
+- Created source summary pages [[diffevc]], [[zest]], and [[textless-speech-emotion-conversion]].
+- Created concept pages [[expressive-guidance]], [[mutual-information-disentanglement]], [[zero-shot-audio-to-audio-emotion-transfer]], and [[textless-emotion-conversion]].
+- Updated existing pages: [[speaker-emotion-tradeoff]], [[speaker-identity-evaluation-in-evc]], [[emotion-intensity-control]], [[f0-pitch-contour-in-voice-conversion]], [[discrete-speech-units-for-evc]], [[diffusion-based-emotion-conversion]], [[evaluation-metrics-for-voice-conversion]], [[speaker-disentanglement]], [[ssl-disentanglement-for-sec]], [[in-the-wild-emotion-conversion]], and [[index]].
+- Updated `../sources.bib` with entries for the newly ingested raw PDFs.
+
+**Timestamp**: [06-05-2026 21:47]
+
+- Added concept page [[f0-pitch-contour-in-voice-conversion]] from a question-answer synthesis about why F0/pitch contour extraction matters in voice conversion.
+- Updated existing pages: [[f0-consistency-loss]], [[spectrum-prosody-conversion]], and [[index]].
+
 **Timestamp**: [06-05-2026 21:17]
 
 - Ingested `Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf`.

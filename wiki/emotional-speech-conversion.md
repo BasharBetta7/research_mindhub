@@ -17,6 +17,9 @@
 - Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
 - Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf
 - Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
+- Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
+- Didi+et+al.pdf
 
 **Last updated**: 2026-05-06
 
@@ -46,6 +49,8 @@ For research on emotion generation, [[evaluation-metrics-for-voice-conversion]] 
 
 [[yang-2022-seq2seq-evc-overview]] adds a survey-level framing: because emotional expression includes speech rate, rhythm, and locally emphasized parts of an utterance, EVC may require models that can alter sequence length and attend to emotionally salient regions (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
 
+[[zhou-2022-evc-theory-esd]] gives the broader theory version of the same point: emotional voice conversion must preserve linguistic information and speaker identity while changing emotion, and emotional expression involves both spectrum and prosody (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). It also positions [[esd-dataset]] as a benchmark intended to support speaker-independent and cross-lingual EVC research (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
 ## Adjacent TTS evidence
 
 [[emovoice]] is an emotional TTS paper rather than an emotional voice conversion paper, but it is relevant because it studies fine-grained natural-language emotion control with [[freestyle-emotion-prompting]] (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf). This suggests a possible future direction for EVC interfaces, but it does not directly prove speaker-preserving or speaker-changing conversion performance (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf).
@@ -65,6 +70,12 @@ For research on emotion generation, [[evaluation-metrics-for-voice-conversion]] 
 ## Prompt-Controlled EVC
 
 [[clapfm-evc]] directly studies prompt-controlled emotional voice conversion by aligning natural-language emotion prompts and emotional speech through [[evc-clap]] (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). It supports reference-speech control, natural-language prompt control, and prompt-based retrieval of reference speech (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
+## Semi-supervised and hybrid generative EVC
+
+[[sgevc]] studies semi-supervised EVC with explicit linguistic, speaker, and emotion variables in a VITS-style generative model (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf). Its main value for this page is that it addresses label scarcity while keeping speaker identity and emotion as separate model factors (source: Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf).
+
+[[seq2seq-cyclegan-evc]] combines Seq2Seq temporal modelling with CycleGAN spectral refinement and reports speaker similarity as well as emotion and quality metrics (source: Didi+et+al.pdf). It should be treated as lower-confidence evidence until its ESD metadata contradiction is resolved (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
 
 ## Adjacent TTS Evidence
 
@@ -107,3 +118,9 @@ For research on emotion generation, [[evaluation-metrics-for-voice-conversion]] 
 - [[daisy-tts]]
 - [[diemo-tts]]
 - [[cross-speaker-emotion-transfer]]
+- [[zhou-2022-evc-theory-esd]]
+- [[esd-dataset]]
+- [[emotional-speech-databases]]
+- [[sgevc]]
+- [[semi-supervised-evc]]
+- [[seq2seq-cyclegan-evc]]

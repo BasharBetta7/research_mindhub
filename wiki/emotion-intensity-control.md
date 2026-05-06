@@ -16,6 +16,7 @@
 - Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
 - Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
 - Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
+- Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
 
 **Last updated**: 2026-05-06
 
@@ -53,6 +54,8 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 
 [[einet]] provides direct EVC evidence for [[vad-based-emotion-intensity]], where VAD values are used to construct intensity pseudo-labels and to drive target-emotion intensity at inference (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). Its controllability examples show broader pitch fluctuation, higher peak energy, stronger acoustic variation, and more short pauses as intensity increases (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
 
+[[diffevc]] provides another direct EVC route to intensity-like control through [[expressive-guidance]], where the diffusion sampling condition is pushed toward the target reference emotion with a tunable guidance scale (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This differs from label interpolation because the control operates through positive and negative speaker-emotion conditions during sampling, so it should be evaluated together with speaker-similarity metrics (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
+
 [[durflex-evc]] does not present an explicit scalar intensity control interface, but it is relevant because [[duration-flexible-evc]] models rhythm and duration, both of which can carry perceived intensity (source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf). [[pflow-vc]] is also adjacent because its discrete pitch conditioning targets expressive prosody transfer rather than a named intensity control variable (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
 ## Related pages
@@ -85,3 +88,5 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 - [[prabhu-2023-in-the-wild-sec]]
 - [[einet]]
 - [[vad-based-emotion-intensity]]
+- [[diffevc]]
+- [[expressive-guidance]]

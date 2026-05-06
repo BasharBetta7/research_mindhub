@@ -4,6 +4,8 @@
 
 **Sources**:
 - Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
+- Didi+et+al.pdf
 
 **Last updated**: 2026-05-06
 
@@ -17,9 +19,14 @@ CycleGAN learns forward and inverse mappings between source and target domains u
 
 Zhou et al. train CycleGAN models for 24-dimensional MCEP spectrum conversion and 10-dimensional CWT-F0 prosody conversion (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf). The framework does not require parallel training data, speech recognition, or time-alignment procedures (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf).
 
+[[zhou-2022-evc-theory-esd]] uses CycleGAN-EVC as one of the reference baselines on ESD and reports that it achieves lower MCD and better MOS speech quality than VAWGAN-EVC in the single-speaker neutral-to-emotion experiments (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). [[seq2seq-cyclegan-evc]] later combines CycleGAN with Seq2Seq by using CycleGAN as a Mel-spectrogram refinement stage after coarse temporal modelling (source: Didi+et+al.pdf).
+
 ## Related pages
 
 - [[transforming-spectrum-and-prosody-for-evc]]
 - [[non-parallel-voice-conversion]]
 - [[spectrum-prosody-conversion]]
 - [[cwt-f0-modelling]]
+- [[zhou-2022-evc-theory-esd]]
+- [[seq2seq-cyclegan-evc]]
+- [[seq2seq-cyclegan-refinement]]

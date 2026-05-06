@@ -8,6 +8,8 @@
 - Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf
 - Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf
 - Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
+- Didi+et+al.pdf
+- Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
 
 **Last updated**: 2026-05-06
 
@@ -28,6 +30,8 @@ Frame-based emotional voice conversion methods usually convert spectrum or proso
 Zhou et al. 2020 is an example of a non-Seq2Seq frame-level approach that improves emotional voice conversion by explicitly converting both spectrum and CWT-based prosody, but it still relies on WORLD features and does not predict duration like Emovox (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf; source: Zhou et al. - 2023 - Emotion Intensity and its Control for Emotional Voice Conversion.pdf).
 
 [[durflex-evc]] addresses the same duration problem from a different direction: it avoids autoregressive Seq2Seq modelling by using discrete units, duration prediction, and parallel generation (source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf). This makes [[duration-flexible-evc]] a broader category than Seq2Seq EVC.
+
+[[seq2seq-cyclegan-evc]] uses Seq2Seq differently: the Seq2Seq module generates a coarse emotion-aware Mel-spectrogram for long-range temporal modelling, then CycleGAN refines the spectrum for adversarial realism (source: Didi+et+al.pdf). This hybrid method is relevant as an architecture pattern, but its ESD metadata conflict means it should not override the canonical ESD description from [[zhou-2022-evc-theory-esd]] (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
 
 ## Dataset constraint
 
@@ -52,3 +56,5 @@ Yang et al. 2022 argues that Seq2Seq EVC generally requires large [[parallel-emo
 - [[discrete-speech-units-for-evc]]
 - [[tacotron]]
 - [[seq2seq-tts]]
+- [[seq2seq-cyclegan-evc]]
+- [[seq2seq-cyclegan-refinement]]
