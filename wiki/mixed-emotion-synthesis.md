@@ -4,6 +4,7 @@
 
 **Sources**:
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
+- Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
 
 **Last updated**: 2026-05-06
 
@@ -21,6 +22,8 @@ Mixed emotion synthesis aims to generate speech with a combination of multiple e
 
 EmoMix also uses mixing between neutral and a primary emotion to control target emotion intensity (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). This makes mixed-emotion synthesis related to [[emotion-intensity-control]], but not identical to scalar control methods such as relative attributes.
 
+[[daisy-tts]] models secondary emotions as mixtures of primary emotion distributions in a decomposed prosody embedding space (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf). Its examples include bittersweetness, delight, pride, disappointment, envy, and outrage as primary-emotion mixtures (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
+
 ## Caution
 
 The paper analyzes mixed emotions partly with SER classifier probabilities (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). Because SER probabilities are proxies for perception, mixed-emotion claims should be interpreted cautiously unless supported by listening tests.
@@ -32,3 +35,5 @@ The paper analyzes mixed emotions partly with SER classifier probabilities (sour
 - [[emotion-intensity-control]]
 - [[ser-perceptual-loss]]
 - [[evaluation-metrics-for-voice-conversion]]
+- [[daisy-tts]]
+- [[prosody-embedding-decomposition]]

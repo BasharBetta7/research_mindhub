@@ -10,6 +10,8 @@
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
 - Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
+- Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
+- Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 
 **Last updated**: 2026-05-06
 
@@ -35,6 +37,10 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 
 [[emomix]] controls primary emotion intensity in TTS by mixing neutral and target-emotion diffusion conditions in different proportions (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). This is adjacent evidence for controllable emotional speech, but not direct EVC evidence because EmoMix is text-to-speech rather than voice conversion (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf).
 
+[[daisy-tts]] controls intensity in emotional TTS by scaling decomposed prosody embedding directions, where smaller scaling weakens emotion expression and larger scaling intensifies it (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf). This is adjacent evidence that intensity can be represented through prosody-space manipulation rather than only through labels (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
+
+[[clapfm-evc]] provides direct EVC evidence for adjustable intensity through an [[adaptive-intensity-gate]] that scales EVC-CLAP emotional features before fusion with content features (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). The ablation reports that removing AIG reduces speech quality and slightly reduces emotional similarity, so the mechanism appears important for the reported prompt-driven EVC system (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
 [[durflex-evc]] does not present an explicit scalar intensity control interface, but it is relevant because [[duration-flexible-evc]] models rhythm and duration, both of which can carry perceived intensity (source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf). [[pflow-vc]] is also adjacent because its discrete pitch conditioning targets expressive prosody transfer rather than a named intensity control variable (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
 ## Related pages
@@ -55,3 +61,8 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 - [[duration-flexible-evc]]
 - [[pitch-conditioned-flow-matching]]
 - [[pflow-vc]]
+- [[daisy-tts]]
+- [[prosody-embedding-decomposition]]
+- [[clapfm-evc]]
+- [[adaptive-intensity-gate]]
+- [[natural-language-emotion-control]]

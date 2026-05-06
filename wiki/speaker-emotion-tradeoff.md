@@ -10,6 +10,10 @@
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
 - Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
+- Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf
+- Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf
+- Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
+- Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
 
 **Last updated**: 2026-05-06
 
@@ -59,6 +63,14 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 
 [[durflex-evc]] is relevant because it reports both speaker similarity and emotion metrics while improving duration/prosody modelling, but it does not sweep an explicit emotion-strength or speaker-preservation control variable (source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf). [[pflow-vc]] is valuable adjacent evidence because it improves zero-shot speaker similarity and emotion consistency with pitch and timbre tokens, but its emotion metric is emotion2vec-based and the paper is expressive VC rather than dedicated EVC (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
+[[yang-2022-seq2seq-evc-overview]] states the standard EVC goal of changing the emotional state while preserving linguistic information and speaker identity (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf). This supports the conceptual importance of the [[speaker-emotion-tradeoff]], but it is not direct evidence for speaker drift because the survey does not measure speaker similarity as emotion conversion strength changes (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
+
+[[clapfm-evc]] is directly relevant because it supports prompt-based or reference-based EVC with adjustable emotion intensity (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). However, its main reported comparison uses quality and emotion-similarity metrics rather than explicit speaker-similarity metrics, so it still does not establish a speaker-emotion frontier (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
+[[diemo-tts]] is adjacent but analytically useful because it directly names the difficulty of separating speaker identity from emotion-related prosody in cross-speaker emotion transfer (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf). It reports both speaker and emotion metrics, but it is TTS rather than EVC and therefore should not be cited as direct EVC speaker-drift evidence (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf).
+
+[[daisy-tts]] is relevant to intensity and mixed-emotion control, but it should not be used as speaker-emotion tradeoff evidence because it is emotional TTS and does not measure speaker identity drift (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
+
 ## Related pages
 
 - [[emo-stargan]]
@@ -79,3 +91,11 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 - [[time-varying-timbre-tokens]]
 - [[pitch-conditioned-flow-matching]]
 - [[speaker-identity-evaluation-in-evc]]
+- [[yang-2022-seq2seq-evc-overview]]
+- [[clapfm-evc]]
+- [[diemo-tts]]
+- [[daisy-tts]]
+- [[cross-speaker-emotion-transfer]]
+- [[adaptive-intensity-gate]]
+- [[speaker-similarity-metrics]]
+- [[self-supervised-emotion-disentanglement]]

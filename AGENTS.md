@@ -18,6 +18,8 @@
 - wiki/index.md -- table of contents for the entire wiki
     
 - wiki/log.md -- append-only record of all operations
+
+- sources.bib -- a bibliography for aricles sources in `raw/`
     
 
 ## Ingest workflow
@@ -35,6 +37,8 @@
     6. Update `wiki/index.md` with new pages and one-line descriptions
     
     7. Append an entry to `wiki/log.md` with the date, source name, and what changed
+
+    8. if the new source is PDF of an article, I want you to add its citation entry to `sources.bib`
     
 - A single source may touch 10-15 wiki pages. That is normal.
 - The depth of injestion depends on the relevance of the added source to the research topic, which is measuring the emotion-speaker tradeoff in emotion voice conversion.

@@ -8,6 +8,36 @@
 
 ---
 
+**Timestamp**: [06-05-2026 16:06]
+
+- Applied wiki audit fixes.
+- Added missing cited sources to [[autovc]], [[emotion-intensity-and-control]], [[speaker-disentanglement]], and [[yang-2022-seq2seq-evc-overview]].
+- Created concept pages [[emotion2vec]], [[speaker-similarity-metrics]], and [[self-supervised-emotion-disentanglement]].
+- Updated existing pages: [[evaluation-metrics-for-voice-conversion]], [[ser-perceptual-loss]], [[speaker-identity-evaluation-in-evc]], [[diemo-tts]], [[cross-speaker-emotion-transfer]], [[speaker-emotion-tradeoff]], and [[index]].
+- Updated `../sources.bib` with a missing entry for `Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf`.
+
+**Timestamp**: [06-05-2026 15:52]
+
+- Ingested `Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf`.
+- Ingested `Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf`.
+- Ingested `Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf`.
+- Created source summary pages [[daisy-tts]], [[diemo-tts]], and [[clapfm-evc]].
+- Created concept pages: [[prosody-embedding-decomposition]], [[cross-speaker-emotion-transfer]], [[natural-language-emotion-control]], [[evc-clap]], [[adaptive-intensity-gate]], and [[flow-matching-evc]].
+- Updated existing pages: [[emotion-intensity-control]], [[freestyle-emotion-prompting]], [[mixed-emotion-synthesis]], [[speaker-identity-evaluation-in-evc]], [[diffusion-based-emotion-conversion]], [[evaluation-metrics-for-voice-conversion]], [[speaker-emotion-tradeoff]], [[emotional-speech-conversion]], [[spectrum-prosody-conversion]], [[pflow-vc]], [[pitch-conditioned-flow-matching]], and [[index]].
+- Updated `../sources.bib` with entries for the newly added raw PDFs.
+
+**Timestamp**: [06-05-2026 15:41]
+
+- Ingested `Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf`.
+- Created source summary page [[yang-2022-seq2seq-evc-overview]].
+- Created concept page [[parallel-emotional-speech-data]].
+- Updated existing pages: [[sequence-to-sequence-emotional-voice-conversion]], [[evaluation-metrics-for-voice-conversion]], [[emotional-speech-conversion]], [[duration-flexible-evc]], [[spectrum-prosody-conversion]], [[speaker-emotion-tradeoff]], and [[index]].
+
+**Timestamp**: [06-05-2026 15:32]
+
+- Added `../sources.bib` with BibTeX entries for all source PDFs currently stored in `research_mindhub/raw/`.
+- Updated [[index]] with a pointer to the bibliography file.
+
 **Timestamp**: [06-05-2026 15:03]
 
 - Audited the wiki for speaker-emotion tradeoff coverage after question-answer synthesis.

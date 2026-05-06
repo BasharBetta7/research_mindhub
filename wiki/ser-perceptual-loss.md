@@ -50,3 +50,4 @@ These papers show that SER models are used in at least three roles: training sup
 - [[deepest]]
 - [[deep-emotional-features]]
 - [[pflow-vc]]
+- [[emotion2vec]]

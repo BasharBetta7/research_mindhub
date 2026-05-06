@@ -4,6 +4,7 @@
 
 **Sources**:
 - Zhou et al. - 2023 - Emotion Intensity and its Control for Emotional Voice Conversion.pdf
+- Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf
 
 **Last updated**: 2026-05-06
 

@@ -4,6 +4,7 @@
 
 **Sources**:
 - Qian et al. - 2019 - AUTOVC Zero-Shot Voice Style Transfer with Only Autoencoder Loss.pdf
+- Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf
 
 **Last updated**: 2026-05-06
 

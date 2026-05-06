@@ -4,6 +4,7 @@
 
 **Sources**:
 - Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf
+- Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 
 **Last updated**: 2026-05-06
 
@@ -12,6 +13,8 @@
 ## Definition
 
 Freestyle emotion prompting means specifying the intended vocal affect with a natural-language description rather than a categorical label (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf). EmoVoice examples include descriptions such as supportive joy, desolation, foreboding, or disdain, paired with target text to synthesize (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf).
+
+[[clapfm-evc]] extends this idea to emotional voice conversion by using natural-language prompts to obtain target emotion embeddings through [[evc-clap]] (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). This makes [[natural-language-emotion-control]] broader than emotional TTS alone.
 
 ## Why it matters
 
@@ -25,6 +28,8 @@ In [[emovoice-db]], each emotional sample has a natural-language emotion descrip
 
 Freestyle prompts make automatic evaluation harder because the target is not just a class label (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf). The EmoVoice paper reports that emotion2vec similarity and multimodal LLM ratings have weak sentence-level alignment with human perception (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf).
 
+ClapFM-EVC evaluates prompt-driven EVC with an ABX preference test against reference-driven conversion, but its reported main tables emphasize quality and emotion similarity rather than speaker identity preservation (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
 ## Related pages
 
 - [[emovoice]]
@@ -32,3 +37,6 @@ Freestyle prompts make automatic evaluation harder because the target is not jus
 - [[emovoice-db]]
 - [[emotion-intensity-control]]
 - [[evaluation-metrics-for-voice-conversion]]
+- [[natural-language-emotion-control]]
+- [[clapfm-evc]]
+- [[evc-clap]]

@@ -8,6 +8,8 @@
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
 - Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf
 - Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf
+- Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf
+- Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 
 **Last updated**: 2026-05-06
 
@@ -16,6 +18,8 @@
 ## Definition
 
 Speaker identity evaluation in EVC asks whether emotion conversion preserves, changes, or anonymises speaker identity as intended (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf). This is the measurement side of the [[speaker-emotion-tradeoff]]: a system may improve emotion transfer or preservation while harming speaker similarity, anonymisation, or intelligibility (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf).
+
+[[speaker-similarity-metrics]] separates the speaker-side measures used across the wiki, because anonymisation EER, speaker classification accuracy, sMOS, SMOS, and SECS answer related but different questions (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf; source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf; source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
 ## Direct evidence
 
@@ -31,9 +35,13 @@ Speaker identity evaluation in EVC asks whether emotion conversion preserves, ch
 
 [[starganv2-vc]] contributes speaker-identity evidence through speaker classification and source-classifier ablations, but its main reported emotional conversion evidence is weaker than its speaker-conversion evaluation (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf). Removing the adversarial source classifier reduces speaker classification accuracy from 96.20% to 63.90% while pMOS and CER stay similar, showing that speaker identity metrics can move independently from naturalness and intelligibility metrics (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf).
 
+[[clapfm-evc]] is direct EVC evidence for flexible emotion control, but its main reported tables use MCD, RMSE, CER, UTMOS, nMOS, EECS, and eMOS rather than explicit speaker-similarity metrics such as SECS, sMOS, or EER (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). It should therefore be treated as partial evidence for speaker identity preservation until speaker-side evaluation is added or found (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
+[[diemo-tts]] is adjacent TTS evidence rather than EVC evidence, but it directly evaluates speaker similarity and emotion similarity in cross-speaker emotion transfer using sMOS, eMOS, SECS, and EECS (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf). Its full system reports cross-speaker nMOS 4.23, sMOS 3.96, eMOS 4.07, SECS 0.8505, and EECS 0.4527 in the ablation table (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf).
+
 ## Gap
 
-The wiki does not yet contain a study that directly sweeps target emotion intensity or conversion strength and measures speaker similarity at each point. Current papers mostly compare systems, endpoints, or ablations rather than a controlled speaker-emotion frontier (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf; source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf). A claim such as "stronger emotion causes speaker drift" should be marked as needing verification until a controlled frontier experiment is available.
+The wiki does not yet contain a study that directly sweeps target emotion intensity or conversion strength and measures speaker similarity at each point. Current papers mostly compare systems, endpoints, or ablations rather than a controlled speaker-emotion frontier (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf; source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf; source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). A claim such as "stronger emotion causes speaker drift" should be marked as needing verification until a controlled frontier experiment is available.
 
 ## Related pages
 
@@ -46,3 +54,7 @@ The wiki does not yet contain a study that directly sweeps target emotion intens
 - [[starganv2-vc]]
 - [[time-varying-timbre-tokens]]
 - [[adversarial-source-classifier-loss]]
+- [[clapfm-evc]]
+- [[diemo-tts]]
+- [[cross-speaker-emotion-transfer]]
+- [[speaker-similarity-metrics]]

@@ -5,6 +5,7 @@
 **Sources**:
 - Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
+- Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 
 **Last updated**: 2026-05-06
 
@@ -18,6 +19,8 @@ Diffusion-based emotion conversion uses a reverse diffusion process to generate 
 
 [[emomix]] uses diffusion for emotional TTS rather than voice conversion, but it shows how diffusion sampling can support mixed emotion and intensity control at run time (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). This makes diffusion a shared modelling family across emotional TTS and emotional voice conversion, even though the input-output tasks differ.
 
+[[clapfm-evc]] is related but uses conditional flow matching rather than a denoising diffusion decoder (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). It is therefore better linked through [[flow-matching-evc]] than treated as a diffusion-based EVC system.
+
 ## Why it matters
 
 EmoConv-Diff uses diffusion to avoid requiring parallel source-target emotion pairs during training (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf). This is important for [[in-the-wild-emotion-conversion]], where clean parallel emotional references are not available (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf).
@@ -29,3 +32,5 @@ EmoConv-Diff uses diffusion to avoid requiring parallel source-target emotion pa
 - [[diffusion-emotion-mixing]]
 - [[in-the-wild-emotion-conversion]]
 - [[emotional-speech-conversion]]
+- [[clapfm-evc]]
+- [[flow-matching-evc]]
