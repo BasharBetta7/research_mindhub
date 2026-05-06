@@ -6,6 +6,7 @@
 - Qian et al. - 2019 - AUTOVC Zero-Shot Voice Style Transfer with Only Autoencoder Loss.pdf
 - Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf
 - Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf
+- Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
 
 **Last updated**: 2026-05-06
 
@@ -21,6 +22,8 @@ In AutoVC, speaker disentanglement means the content embedding does not contain 
 
 In emotion-preserving anonymisation, speaker disentanglement is connected to the [[speaker-emotion-tradeoff]], because removing or changing speaker identity should not erase emotion cues (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf).
 
+[[ssl-disentanglement-for-sec]] uses pretrained SSL encoders for a different disentanglement route: HuBERT units for lexical content, WavLM speaker verification embeddings for speaker identity, and arousal embeddings for emotion (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf).
+
 ## Related pages
 
 - [[autovc]]
@@ -28,3 +31,5 @@ In emotion-preserving anonymisation, speaker disentanglement is connected to the
 - [[adversarial-source-classifier-loss]]
 - [[voice-conversion]]
 - [[speaker-emotion-tradeoff]]
+- [[ssl-disentanglement-for-sec]]
+- [[prabhu-2023-in-the-wild-sec]]

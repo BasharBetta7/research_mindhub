@@ -7,6 +7,7 @@
 - Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf
 - Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf
 - Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf
+- Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
 
 **Last updated**: 2026-05-06
 
@@ -17,6 +18,8 @@
 Sequence-to-sequence models with attention can jointly learn feature mapping and alignment, and can predict speech duration at run time (source: Zhou et al. - 2023 - Emotion Intensity and its Control for Emotional Voice Conversion.pdf). Yang et al. 2022 gives the broader survey motivation: speech rate and rhythm are key factors of emotional conversion, so emotional conversion may require output sequences with different lengths from the input (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
 
 [[yang-2022-seq2seq-evc-overview]] summarizes three advantages of Seq2Seq EVC: joint feature mapping/alignment/duration prediction, less mismatch between separately converted spectrum and prosody, and attention over emotionally emphasized utterance regions (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
+
+[[tacotron]] is useful historical background because it shows how sequence-to-sequence attention can map text to acoustic frames in TTS, but it is not an EVC model and should not be cited as emotional conversion evidence (source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf).
 
 ## Difference from frame-based EVC
 
@@ -47,3 +50,5 @@ Yang et al. 2022 argues that Seq2Seq EVC generally requires large [[parallel-emo
 - [[durflex-evc]]
 - [[duration-flexible-evc]]
 - [[discrete-speech-units-for-evc]]
+- [[tacotron]]
+- [[seq2seq-tts]]

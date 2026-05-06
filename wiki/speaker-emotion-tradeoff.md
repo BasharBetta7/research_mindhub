@@ -14,6 +14,13 @@
 - Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf
 - Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 - Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
+- Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf
+- Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
+- Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf
+- Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
+- Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
+- Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf
+- Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
 
 **Last updated**: 2026-05-06
 
@@ -71,6 +78,18 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 
 [[daisy-tts]] is relevant to intensity and mixed-emotion control, but it should not be used as speaker-emotion tradeoff evidence because it is emotional TTS and does not measure speaker identity drift (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
 
+[[emodiff]] is relevant to intensity control because it sweeps target emotion strength through soft-label guidance, but it should not be used as speaker-emotion tradeoff evidence because the task is single-speaker emotional TTS rather than EVC (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf).
+
+[[hierarchical-emotion-rendering]] reports speaker-similarity metrics alongside hierarchical emotion-control metrics, but it still does not establish the EVC speaker-emotion tradeoff because it synthesizes speech from text rather than converting a source speaker to a target emotional speech sample (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf). Its useful contribution to this page is methodological: future EVC tradeoff studies may need speaker metrics at the same time as utterance-, word-, and phoneme-level emotion-control metrics (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf).
+
+[[tf-mamba-ser]] is relevant only on the measurement side: a stronger SER model could provide a better automatic emotion proxy for tradeoff experiments, but it does not itself test whether emotion conversion changes speaker identity (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf).
+
+[[prabhu-2023-in-the-wild-sec]] is direct in-the-wild SEC evidence because it designs separate SSL representations for lexical content, speaker identity, and arousal (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf). It still does not close the tradeoff gap because the reported evaluation focuses on SER arousal errors and WVMOS rather than explicit speaker similarity after conversion (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf).
+
+[[einet]] is direct EVC evidence for controllable emotional intensity and explicitly adds an identity maintainer to reduce speaker identity loss under intensity manipulation (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). However, it reports naturalness, emotion similarity, F0, duration, and SER accuracy rather than a standard speaker-similarity metric, so it still does not provide a speaker-emotion Pareto frontier (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
+
+[[voicebox]] and [[tacotron]] should not be used as speaker-emotion tradeoff evidence because they are general speech generation or TTS backbone papers rather than EVC studies (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf; source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf). Voicebox is especially tempting to overcite because it transfers audio style from context, but the paper explicitly states that it cannot independently control voice, speaking style, emotion, and acoustic condition (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf).
+
 ## Related pages
 
 - [[emo-stargan]]
@@ -99,3 +118,15 @@ The wiki does not yet document a systematic speaker-emotion tradeoff curve, alph
 - [[adaptive-intensity-gate]]
 - [[speaker-similarity-metrics]]
 - [[self-supervised-emotion-disentanglement]]
+- [[emodiff]]
+- [[soft-label-guidance]]
+- [[hierarchical-emotion-rendering]]
+- [[hierarchical-emotion-control]]
+- [[tf-mamba-ser]]
+- [[temporal-frequency-ser]]
+- [[prabhu-2023-in-the-wild-sec]]
+- [[ssl-disentanglement-for-sec]]
+- [[einet]]
+- [[vad-based-emotion-intensity]]
+- [[voicebox]]
+- [[tacotron]]

@@ -5,6 +5,7 @@
 **Sources**:
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
 - Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
+- Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf
 
 **Last updated**: 2026-05-06
 
@@ -24,6 +25,8 @@ EmoMix also uses mixing between neutral and a primary emotion to control target 
 
 [[daisy-tts]] models secondary emotions as mixtures of primary emotion distributions in a decomposed prosody embedding space (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf). Its examples include bittersweetness, delight, pride, disappointment, envy, and outrage as primary-emotion mixtures (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
 
+[[emodiff]] generalizes [[soft-label-guidance]] from neutral-to-target intensity control to mixed emotions by allowing weighted soft emotion labels during classifier-guided diffusion sampling (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf). This is conceptually close to EmoMix, but the mechanism is classifier-gradient guidance rather than direct mixing of predicted denoising outputs (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf; source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf).
+
 ## Caution
 
 The paper analyzes mixed emotions partly with SER classifier probabilities (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). Because SER probabilities are proxies for perception, mixed-emotion claims should be interpreted cautiously unless supported by listening tests.
@@ -37,3 +40,5 @@ The paper analyzes mixed emotions partly with SER classifier probabilities (sour
 - [[evaluation-metrics-for-voice-conversion]]
 - [[daisy-tts]]
 - [[prosody-embedding-decomposition]]
+- [[emodiff]]
+- [[soft-label-guidance]]

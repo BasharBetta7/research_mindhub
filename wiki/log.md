@@ -8,6 +8,36 @@
 
 ---
 
+**Timestamp**: [06-05-2026 21:17]
+
+- Ingested `Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf`.
+- Ingested `Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf`.
+- Ingested `Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf`.
+- Ingested `Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf`.
+- Created source summary pages [[prabhu-2023-in-the-wild-sec]], [[einet]], [[voicebox]], and [[tacotron]].
+- Created concept pages: [[ssl-disentanglement-for-sec]], [[vad-based-emotion-intensity]], [[text-guided-speech-infilling]], and [[seq2seq-tts]].
+- Updated existing pages: [[in-the-wild-emotion-conversion]], [[arousal-based-emotion-control]], [[emotion-intensity-control]], [[speaker-identity-evaluation-in-evc]], [[speaker-emotion-tradeoff]], [[flow-matching-evc]], [[sequence-to-sequence-emotional-voice-conversion]], [[evaluation-metrics-for-voice-conversion]], [[ser-perceptual-loss]], [[speaker-disentanglement]], and [[index]].
+- Updated `../sources.bib` with entries for the newly ingested raw PDFs.
+
+**Timestamp**: [06-05-2026 21:12]
+
+- Ingested `Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf`.
+- Created source summary page [[tf-mamba-ser]].
+- Created concept page [[temporal-frequency-ser]].
+- Updated existing pages: [[ser-perceptual-loss]], [[deep-emotional-features]], [[emotion2vec]], [[evaluation-metrics-for-voice-conversion]], [[speaker-emotion-tradeoff]], and [[index]].
+- Updated `../sources.bib` with a BibTeX entry for TF-Mamba.
+
+**Timestamp**: [06-05-2026 16:42]
+
+- Ingested `Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf`.
+- Ingested `Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf`.
+- Ingested `Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf`.
+- Ingested `Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf`.
+- Created source summary pages [[emodiff]], [[hierarchical-emotion-rendering]], [[e3-tts]], and [[glow-tts]].
+- Created concept pages: [[soft-label-guidance]], [[hierarchical-emotion-control]], [[hierarchical-emotion-distribution]], [[end-to-end-diffusion-tts]], [[flow-based-tts]], and [[monotonic-alignment-search]].
+- Updated existing pages: [[emotion-intensity-control]], [[mixed-emotion-synthesis]], [[diffusion-based-emotion-conversion]], [[flow-matching-evc]], [[evaluation-metrics-for-voice-conversion]], [[speaker-emotion-tradeoff]], [[speaker-identity-evaluation-in-evc]], and [[index]].
+- Updated `../sources.bib` with entries for EmoDiff, Hierarchical Control of Emotion Rendering, and Glow-TTS.
+
 **Timestamp**: [06-05-2026 16:06]
 
 - Applied wiki audit fixes.

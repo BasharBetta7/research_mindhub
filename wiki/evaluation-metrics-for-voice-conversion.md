@@ -17,6 +17,15 @@
 - Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf
 - Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf
 - Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
+- Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf
+- Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
+- Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf
+- Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf
+- Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf
+- Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
+- Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
+- Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf
+- Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf
 
 **Last updated**: 2026-05-06
 
@@ -60,6 +69,24 @@ For [[diemo-tts]], cross-speaker emotion transfer evaluation uses nMOS, sMOS, eM
 
 For [[daisy-tts]], evaluation uses MOS for speech naturalness and a human emotion perception test for emotion perceivability (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf). The paper also reports that increasing emotion intensity tends to improve emotion perceivability, although this is TTS evidence rather than EVC evidence (source: Chevi and Aji - 2024 - Daisy-TTS Simulating Wider Spectrum of Emotions via Prosody Embedding Decomposition.pdf).
 
+For [[emodiff]], emotional TTS evaluation uses MOS, MCD, classifier probability under intensity sweeps, and diversity preference tests (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf). Its classifier-probability intensity metric is useful for controlled-sampling diagnostics, but it remains a proxy rather than a human perceptual measure (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf).
+
+For [[hierarchical-emotion-rendering]], emotional TTS evaluation includes WER, MCD, pitch distortion, energy distortion, speaker embedding cosine similarity, emotion-controllability correlations, MUSHRA naturalness, MUSHRA emotional similarity, and best-worst scaling for utterance- and word-level controllability (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf). This is a useful TTS-side example of evaluating emotion control and speaker similarity together, but it is not a voice-conversion tradeoff experiment (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf).
+
+For [[e3-tts]], general TTS evaluation uses MOS on a proprietary single-speaker dataset, SQuId and speaker similarity for prompt TTS and text editing, and a speaker-identification task based on diffusion timestep sampling (source: Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf). These metrics are relevant to TTS backbone evaluation but not to emotion conversion (source: Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf).
+
+For [[glow-tts]], general TTS evaluation uses MOS, synthesis speed, long-utterance robustness, and multi-speaker MOS; the paper also includes a voice-conversion-style speaker-inversion experiment (source: Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf). These results are architectural background and should not be used as evidence for EVC emotion preservation (source: Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf).
+
+For [[tf-mamba-ser]], SER evaluation uses weighted accuracy and unweighted accuracy on IEMOCAP and weighted F1 on MELD (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf). This is relevant because emotional speech generation papers often use SER predictions or embeddings as objective emotion proxies, but TF-Mamba itself is not a voice-conversion evaluation study (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf).
+
+For [[prabhu-2023-in-the-wild-sec]], in-the-wild SEC evaluation uses SER mean-squared and mean-absolute arousal errors plus WVMOS for objective naturalness (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf). This metric set fits the non-parallel setting, but it does not directly measure converted-speaker similarity (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf).
+
+For [[einet]], EVC evaluation uses MCD, log-F0 RMSE, DDUR, external SER classification accuracy, MOS naturalness, and subjective emotion similarity (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). These metrics capture acoustic distortion, prosody, rhythm, emotion recognizability, and subjective quality, but the main reported table does not include a standard speaker-similarity metric (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
+
+For [[voicebox]], general speech generation evaluation uses WER, audio-context similarity, Frechet Speech Distance, QMOS, and SMOS (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf). Voicebox's critique of signal-level metrics is relevant to speech generation evaluation because deterministic metrics can unfairly penalize valid diverse samples (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf).
+
+For [[tacotron]], general TTS evaluation uses 5-scale MOS for naturalness and ablation analysis of attention alignment and post-processing behavior (source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf). This is historical TTS evaluation context and not EVC evaluation evidence (source: Wang et al. - 2017 - Tacotron Towards End-to-End Speech Synthesis.pdf).
+
 ## Reported values
 
 Full [[starganv2-vc]] reports pMOS 3.95, speaker classification accuracy 96.20%, and CER 12.55% (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf). AUTO-VC reports pMOS 3.43, speaker classification accuracy 50.30%, and CER 47.43% in the same objective comparison table (source: Li et al. - 2021 - StarGANv2-VC A Diverse, Unsupervised, Non-parallel Framework for Natural-Sounding Voice Conversion.pdf).
@@ -85,6 +112,12 @@ The DeepEST and PFlow-VC papers add another recurring caution: SER or emotion2ve
 Yang et al. 2022 gives a survey-level version of the same caution: objective metrics only indicate closeness under a chosen measurement and do not guarantee that humans perceive the converted speech as close to the target (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf). The paper argues that subjective annotations remain the gold standard for EVC evaluation until automatic perceptual evaluation matures (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
 
 ClapFM-EVC adds a new caution for prompt-controlled EVC: a system can report strong emotion similarity and naturalness while still leaving speaker preservation under-measured if speaker-side metrics are absent from the main evaluation (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
+
+The new emotional TTS sources strengthen a broader caution: speaker metrics can appear in TTS papers, but they do not automatically answer whether EVC emotion conversion causes speaker drift (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf; source: Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf; source: Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf).
+
+[[tf-mamba-ser]] strengthens the SER-proxy side of evaluation, but it does not remove the gap between automatic recognition and human-perceived emotional quality (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf). If a future EVC system reports TF-Mamba-based emotion accuracy, it should still be paired with listening tests and speaker-side metrics (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf).
+
+The newest direct EVC intensity sources sharpen the same warning: [[prabhu-2023-in-the-wild-sec]] and [[einet]] evaluate controllable emotion conversion, but neither reports a full speaker-similarity sweep over emotion intensity (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf; source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
 
 ## Related pages
 
@@ -121,3 +154,18 @@ ClapFM-EVC adds a new caution for prompt-controlled EVC: a system can report str
 - [[natural-language-emotion-control]]
 - [[emotion2vec]]
 - [[speaker-similarity-metrics]]
+- [[emodiff]]
+- [[soft-label-guidance]]
+- [[hierarchical-emotion-rendering]]
+- [[hierarchical-emotion-control]]
+- [[e3-tts]]
+- [[glow-tts]]
+- [[tf-mamba-ser]]
+- [[temporal-frequency-ser]]
+- [[prabhu-2023-in-the-wild-sec]]
+- [[einet]]
+- [[vad-based-emotion-intensity]]
+- [[voicebox]]
+- [[text-guided-speech-infilling]]
+- [[tacotron]]
+- [[seq2seq-tts]]

@@ -9,6 +9,9 @@
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
 - Zhou et al. - 2021 - Seen and Unseen emotional style transfer for voice conversion with a new emotional speech dataset.pdf
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
+- Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf
+- Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
+- Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
 
 **Last updated**: 2026-05-06
 
@@ -36,6 +39,10 @@ These papers show that SER models are used in at least three roles: training sup
 
 [[deepest]] uses SER-derived [[deep-emotional-features]] as the target emotional style condition during conversion (source: Zhou et al. - 2021 - Seen and Unseen emotional style transfer for voice conversion with a new emotional speech dataset.pdf). [[pflow-vc]] evaluates emotion style transfer with an emotion2vec-derived emotion consistency score, so it should be read with the same proxy-metric caution (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
+[[tf-mamba-ser]] is relevant as a stronger SER-backbone example because it models both temporal and frequency-domain emotional cues and reports improved SER accuracy on IEMOCAP and MELD (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf). However, better SER classification does not remove the need for human evaluation when SER outputs are used as perceptual losses or metrics for generated speech (source: Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf).
+
+[[prabhu-2023-in-the-wild-sec]] adds an SER loss based on concordance correlation coefficient between target arousal and SER-predicted arousal on resynthesized speech (source: Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf). [[einet]] uses an external pretrained SER model for objective emotion classification accuracy, so it belongs more to SER-based evaluation than to SER perceptual training loss (source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf).
+
 ## Related pages
 
 - [[emovox]]
@@ -51,3 +58,7 @@ These papers show that SER models are used in at least three roles: training sup
 - [[deep-emotional-features]]
 - [[pflow-vc]]
 - [[emotion2vec]]
+- [[tf-mamba-ser]]
+- [[temporal-frequency-ser]]
+- [[prabhu-2023-in-the-wild-sec]]
+- [[einet]]

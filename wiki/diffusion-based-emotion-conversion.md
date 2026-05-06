@@ -6,6 +6,9 @@
 - Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf
 - Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf
 - Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
+- Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf
+- Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf
+- Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
 
 **Last updated**: 2026-05-06
 
@@ -18,6 +21,12 @@ Diffusion-based emotion conversion uses a reverse diffusion process to generate 
 ## Relation to TTS diffusion
 
 [[emomix]] uses diffusion for emotional TTS rather than voice conversion, but it shows how diffusion sampling can support mixed emotion and intensity control at run time (source: Tang et al. - 2023 - EmoMix Emotion Mixing via Diffusion Models for Emotional Speech Synthesis.pdf). This makes diffusion a shared modelling family across emotional TTS and emotional voice conversion, even though the input-output tasks differ.
+
+[[emodiff]] uses diffusion classifier guidance for emotional TTS intensity control through [[soft-label-guidance]], which makes it relevant to controllable emotional speech generation even though it is not a conversion model (source: Guo et al. - 2023 - EmoDiff Intensity Controllable Emotional Text-to-Speech with Soft-Label Guidance.pdf).
+
+[[hierarchical-emotion-rendering]] uses a diffusion-based emotional TTS framework with hierarchical emotion-distribution conditioning, showing another TTS-side route to controllable emotional speech (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf).
+
+[[e3-tts]] is diffusion TTS background rather than emotional speech generation: it directly generates waveform from text with BERT features and a 1D U-Net diffusion model (source: Gao et al. - 2023 - E3 TTS Easy End-to-End Diffusion-based Text to Speech.pdf).
 
 [[clapfm-evc]] is related but uses conditional flow matching rather than a denoising diffusion decoder (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). It is therefore better linked through [[flow-matching-evc]] than treated as a diffusion-based EVC system.
 
@@ -34,3 +43,9 @@ EmoConv-Diff uses diffusion to avoid requiring parallel source-target emotion pa
 - [[emotional-speech-conversion]]
 - [[clapfm-evc]]
 - [[flow-matching-evc]]
+- [[emodiff]]
+- [[soft-label-guidance]]
+- [[hierarchical-emotion-rendering]]
+- [[hierarchical-emotion-control]]
+- [[e3-tts]]
+- [[end-to-end-diffusion-tts]]

@@ -5,6 +5,9 @@
 **Sources**:
 - Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
+- Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf
+- Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf
+- Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf
 
 **Last updated**: 2026-05-06
 
@@ -22,6 +25,14 @@ Flow matching EVC uses a conditional flow matching model to reconstruct or gener
 
 [[pflow-vc]] uses a masked pitch-conditioned flow matching model for expressive voice conversion with discrete pitch tokens and target speaker prompt information (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf). This makes flow matching a recurring modelling family for expressive conversion and EVC-adjacent systems.
 
+## TTS background
+
+[[hierarchical-emotion-rendering]] uses a Matcha-TTS-style optimal-transport conditional flow matching backbone for emotional TTS, so it is related architecturally but not an EVC system (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf).
+
+[[voicebox]] is large-scale speech generation background for flow matching: it trains a non-autoregressive continuous normalizing flow with flow matching for text-guided speech infilling (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf). It is not an EVC method because it transfers style through audio context rather than independently controlling speaker and emotion attributes (source: Le et al. - 2023 - Voicebox Text-Guided Multilingual Universal Speech Generation at Scale.pdf).
+
+[[glow-tts]] is also flow-related background, but it uses normalizing flows and [[monotonic-alignment-search]] rather than a conditional flow matching objective (source: Kim et al. - 2020 - Glow-TTS A Generative Flow for Text-to-Speech via Monotonic Alignment Search.pdf).
+
 ## Related pages
 
 - [[clapfm-evc]]
@@ -29,4 +40,8 @@ Flow matching EVC uses a conditional flow matching model to reconstruct or gener
 - [[pitch-conditioned-flow-matching]]
 - [[diffusion-based-emotion-conversion]]
 - [[emotional-speech-conversion]]
-
+- [[hierarchical-emotion-rendering]]
+- [[flow-based-tts]]
+- [[glow-tts]]
+- [[voicebox]]
+- [[text-guided-speech-infilling]]

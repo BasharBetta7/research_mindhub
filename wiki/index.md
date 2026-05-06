@@ -15,16 +15,25 @@
 - [[clapfm-evc]] - Summary of Pan et al. 2025, the prompt- and reference-controlled emotional voice conversion paper.
 - [[daisy-tts]] - Summary of Chevi and Aji 2024, the emotional TTS paper using prosody embedding decomposition.
 - [[diemo-tts]] - Summary of Cho et al. 2025, the cross-speaker emotional TTS paper using self-supervised emotion disentanglement.
+- [[e3-tts]] - Summary of Gao et al. 2023, the end-to-end diffusion TTS paper that directly generates waveform from text.
 - [[emo-stargan]] - Summary of Ghosh et al. 2023, the Emo-StarGAN paper for semi-supervised emotion-preserving voice conversion.
 - [[emoconv-diff]] - Summary of Prabhu et al. 2024, the EmoConv-Diff paper for diffusion-based speech emotion conversion on non-parallel in-the-wild data.
+- [[emodiff]] - Summary of Guo et al. 2023, the emotional TTS paper using soft-label guidance for intensity control.
 - [[emomix]] - Summary of Tang et al. 2023, the EmoMix paper for diffusion-based emotional TTS with mixed emotion synthesis.
 - [[emotion-intensity-and-control]] - Summary of Zhou et al. 2023, the Emovox paper for emotion intensity modelling and control in emotional voice conversion.
 - [[emovoice]] - Summary of Yang et al. 2025, the EmoVoice paper for LLM-based emotional TTS with freestyle text prompting.
+- [[glow-tts]] - Summary of Kim et al. 2020, the flow-based TTS paper introducing Monotonic Alignment Search.
+- [[hierarchical-emotion-rendering]] - Summary of Inoue et al. 2025, the emotional TTS paper for utterance-, word-, and phoneme-level emotion rendering control.
 - [[deepest]] - Summary of Zhou et al. 2021, the DeepEST paper for seen and unseen emotional style transfer and the ESD dataset.
 - [[durflex-evc]] - Summary of Oh et al. 2025, the DurFlex-EVC paper for duration-flexible EVC without text alignment.
+- [[einet]] - Summary of Qi et al. 2024, the Emotional Intensity-aware Network for controllable realistic EVC.
 - [[pflow-vc]] - Summary of Zuo et al. 2025, the PFlow-VC paper for expressive VC with pitch-conditioned flow matching.
+- [[prabhu-2023-in-the-wild-sec]] - Summary of Prabhu et al. 2023, the SSL-disentangled in-the-wild speech emotion conversion paper.
 - [[starganv2-vc]] - Summary of Li et al. 2021, the StarGANv2-VC paper for unsupervised non-parallel many-to-many voice conversion.
+- [[tacotron]] - Summary of Wang et al. 2017, the end-to-end sequence-to-sequence TTS paper.
+- [[tf-mamba-ser]] - Summary of Zhao et al. 2024, the temporal-frequency Mamba paper for efficient speech emotion recognition.
 - [[transforming-spectrum-and-prosody-for-evc]] - Summary of Zhou et al. 2020, the CycleGAN/CWT paper for non-parallel spectrum and prosody conversion in EVC.
+- [[voicebox]] - Summary of Le et al. 2023, the large-scale text-guided speech infilling and flow-matching speech generation paper.
 - [[yang-2022-seq2seq-evc-overview]] - Summary of Yang et al. 2022, the survey of sequence-to-sequence emotional voice conversion.
 
 ## Concepts
@@ -42,6 +51,7 @@
 - [[deep-emotional-features]] - SER-derived continuous emotion descriptors used for emotional style transfer.
 - [[discrete-speech-units-for-evc]] - Learned speech units used for alignment-free emotional voice conversion.
 - [[duration-flexible-evc]] - EVC that explicitly models duration and rhythm as part of emotion conversion.
+- [[end-to-end-diffusion-tts]] - Diffusion TTS that directly generates waveform from text without an intermediate acoustic representation.
 - [[emotion-aware-acoustic-feature-loss]] - Emo-StarGAN loss comparing source and converted emotion-correlated acoustic descriptors.
 - [[emotion-classifier-loss]] - Direct emotion supervision loss used by Emo-StarGAN when labels are available.
 - [[emotion-embedding-loss]] - Emo-StarGAN loss comparing latent emotion representations of source and converted speech.
@@ -54,14 +64,18 @@
 - [[emovox]] - Sequence-to-sequence emotional voice conversion framework with emotion intensity control.
 - [[evaluation-metrics-for-voice-conversion]] - Subjective and objective metrics used for naturalness, speaker similarity, and intelligibility.
 - [[f0-consistency-loss]] - Pitch-contour preservation loss based on normalized F0.
+- [[flow-based-tts]] - TTS with generative normalizing flows, currently represented by Glow-TTS.
 - [[flow-matching-evc]] - Emotional or expressive voice conversion using conditional flow matching decoders.
 - [[freestyle-emotion-prompting]] - Speech emotion control using natural-language affect descriptions rather than fixed class labels.
 - [[information-bottleneck-for-voice-conversion]] - AutoVC bottleneck mechanism for balancing reconstruction and speaker disentanglement.
 - [[in-the-wild-emotion-conversion]] - Emotional speech conversion on naturalistic non-parallel recordings with real-world variability.
+- [[hierarchical-emotion-control]] - Fine-grained emotion control at utterance, word, and phoneme levels.
+- [[hierarchical-emotion-distribution]] - Soft emotion-intensity distributions extracted at multiple segment levels for hierarchical emotion control.
 - [[llm-based-emotional-tts]] - Emotional TTS approach that uses an LLM backbone to interpret text and emotion instructions.
 - [[many-to-many-voice-conversion]] - Voice conversion among multiple source and target speaker domains.
 - [[mapping-network]] - Latent-to-style module used for diverse target-domain style sampling.
 - [[mixed-emotion-synthesis]] - Speech synthesis that expresses combinations of multiple emotional qualities.
+- [[monotonic-alignment-search]] - Dynamic-programming alignment mechanism used by Glow-TTS.
 - [[natural-language-emotion-control]] - Prompt-based control of target emotional expression in TTS or EVC.
 - [[non-parallel-voice-conversion]] - Voice conversion trained without paired source-target utterances.
 - [[parallel-emotional-speech-data]] - Matched emotional utterance data used by Seq2Seq EVC and limited by scarcity and collection cost.
@@ -70,9 +84,12 @@
 - [[ser-perceptual-loss]] - Emotion supervision from a pretrained speech emotion recognizer.
 - [[self-supervised-emotion-disentanglement]] - Teacher-student emotion representation learning that reduces speaker leakage.
 - [[separate-vs-joint-prosody-training]] - Comparison of separate and joint learning for spectrum and prosody conversion.
+- [[seq2seq-tts]] - Sequence-to-sequence text-to-speech with attention-based acoustic-frame generation.
+- [[soft-label-guidance]] - Diffusion classifier-guidance variant that controls emotion intensity with weighted emotion labels.
 - [[speaker-emotion-tradeoff]] - Evidence and open gaps around speaker conversion/anonymisation versus emotion preservation.
 - [[speaker-disentanglement]] - Removing speaker identity from content representations while preserving conversion-relevant information.
 - [[speaker-similarity-metrics]] - Speaker-side metrics such as EER, speaker classification accuracy, sMOS, SMOS, and SECS.
+- [[ssl-disentanglement-for-sec]] - Self-supervised disentanglement of lexical, speaker, and emotion factors for speech emotion conversion.
 - [[spectrum-prosody-conversion]] - Joint research concern of transforming spectral and prosodic emotion cues.
 - [[speech-anonymisation]] - Modifying speech to remove speaker identity while preserving content.
 - [[speaker-identity-evaluation-in-evc]] - Metrics and evidence for speaker preservation, similarity, or anonymisation in emotional voice conversion.
@@ -85,5 +102,8 @@
 - [[prosody-embedding-decomposition]] - Prosody latent-space manipulation for primary emotions, mixed emotions, intensity, and polarity.
 - [[seen-and-unseen-emotion-transfer]] - Reference-conditioned transfer to emotion styles seen or unseen during conversion-model training.
 - [[synthetic-emotional-speech-data]] - Emotional speech data generated by a model rather than recorded from human speakers.
+- [[temporal-frequency-ser]] - Speech emotion recognition that models both temporal dynamics and frequency-domain structure.
+- [[text-guided-speech-infilling]] - Speech generation task that fills masked speech from surrounding audio and transcript context.
 - [[time-varying-timbre-tokens]] - Dynamic timbre representations used alongside global speaker embeddings.
+- [[vad-based-emotion-intensity]] - Emotion intensity modeling with valence, arousal, and dominance values.
 - [[zero-shot-voice-conversion]] - Voice conversion involving speakers unseen during conversion-model training.
