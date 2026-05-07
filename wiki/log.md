@@ -4,9 +4,21 @@
 
 **Sources**: Personal wiki metadata.
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-07
 
 ---
+
+**Timestamp**: [07-05-2026 14:06]
+
+- Updated `exp_wiki/model-inferred-intensity-alpha-critique.md` to embed and analyze experiment plots from `exp/MODEL_inferred_intensity`.
+- Added visual evidence sections for the alpha sweep, speaker-cosine drift, per-emotion alpha behavior, epoch sweep, and style-space PCA.
+
+**Timestamp**: [07-05-2026 13:45]
+
+- Ran critique on `exp/MODEL_inferred_intensity`.
+- Created `exp_wiki/index.md`.
+- Created `exp_wiki/model-inferred-intensity-alpha-critique.md` with analysis of the alpha sweep, epoch sweep, emotion-specific failures, speaker-specific drift, and methodology cautions.
+- Updated [[index]] with links to the experiment critique pages.
 
 **Timestamp**: [06-05-2026 22:37]
 

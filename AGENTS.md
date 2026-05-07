@@ -19,6 +19,8 @@
     
 - wiki/log.md -- append-only record of all operations
 
+- exp_wiki/ -- markdown pages specific for `exp/`. 
+
 - sources.bib -- a bibliography for aricles sources in `raw/`
     
 
@@ -119,6 +121,15 @@ When the user asks you to lint or audit the wiki:
     
 - Report findings as a numbered list with suggested fixes
     
+## Critique
+When the user asks you to `run critique`:
+- You should analyze the contents of `exp/` folder
+- analyze the data, and search for trends, and draw conclusions.
+- Relate the results with current knowledge about speaker emotion tradeoff
+- Cite your answer by providing the experiment that were extracted from.
+- Don't improvise, ask for clarification when needed.
+- Injest the results of critique into markdown pages inside `exp_wiki`. You can use cross references to `wiki/`, but don't mix experiment analysis with general raw sources injestion.
+- It is important to analyze csv files, and use availabel plots in your injestion.
 
 ## Rules
 - Never modify anything in the `raw/` and `exp/` folders.

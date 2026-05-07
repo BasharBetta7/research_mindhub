@@ -4,7 +4,7 @@
 
 **Sources**: Personal wiki metadata.
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-07
 
 ---
 
@@ -123,3 +123,8 @@
 - [[vad-based-emotion-intensity]] - Emotion intensity modeling with valence, arousal, and dominance values.
 - [[zero-shot-voice-conversion]] - Voice conversion involving speakers unseen during conversion-model training.
 - [[zero-shot-audio-to-audio-emotion-transfer]] - Reference-audio emotion transfer that preserves source speaker and content in zero-shot settings.
+
+## Experiment critiques
+
+- [Experiment wiki index](../exp_wiki/index.md) - Table of contents for analyses derived from `research_mindhub/exp/`.
+- [Model inferred intensity alpha critique](../exp_wiki/model-inferred-intensity-alpha-critique.md) - Critique of the `MODEL_inferred_intensity` epoch and alpha sweeps, focused on emotion accuracy versus speaker drift.

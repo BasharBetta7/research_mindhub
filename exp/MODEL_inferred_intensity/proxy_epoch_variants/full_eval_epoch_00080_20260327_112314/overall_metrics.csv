@@ -1,0 +1,2 @@
+model_variant,alpha,speaker_cosine,emotion_acc,emotion_conf,emotion_ref_cosine
+epoch_00080,1.0,0.7525585718452931,0.45,0.4593677413187834,0.3412081828340888
