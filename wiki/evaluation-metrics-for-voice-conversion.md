@@ -33,7 +33,7 @@
 - Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
 - Didi+et+al.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-07
 
 ---
 
@@ -55,7 +55,7 @@ The [[speaker-emotion-tradeoff]] can be measured by comparing speaker/anonymisat
 
 For sequence-to-sequence emotional voice conversion, Emovox uses MCD for spectral distortion and DDUR for duration distortion, because duration conversion is part of the model's output behavior (source: Zhou et al. - 2023 - Emotion Intensity and its Control for Emotional Voice Conversion.pdf). It also uses MOS for emotion similarity and best-worst scaling to evaluate speech quality, emotion intensity, and emotion similarity (source: Zhou et al. - 2023 - Emotion Intensity and its Control for Emotional Voice Conversion.pdf).
 
-[[yang-2022-seq2seq-evc-overview]] lists the broader Seq2Seq EVC metric set as WER, CER, cosine similarity, MCD, DDUR, VDE, GPE, FFE, subjective speech emotion recognition, MOS, ABX, and best-worst scaling (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf). This matters because Seq2Seq EVC changes more than spectral frames: evaluation may need to check content, duration, pitch, emotion, and subjective similarity together (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf).
+[[yang-2022-seq2seq-evc-overview]] lists the broader Seq2Seq EVC metric set as WER, CER, cosine similarity, MCD, DDUR, VDE, GPE, FFE, subjective speech emotion recognition, MOS, ABX, and best-worst scaling (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf). This matters because Seq2Seq EVC changes more than spectral frames: evaluation may need to check content, duration, pitch, emotion, and subjective similarity together (source: Yang et al. - 2022 - An Overview & Analysis of Sequence-to-Sequence Emotional Voice Conversion.pdf). [[objective-speech-evaluation-metrics]] provides a compact glossary for these recurring abbreviations and metric families.
 
 For CycleGAN-based emotional voice conversion, Zhou et al. 2020 evaluates spectrum conversion with MCD and F0 conversion with RMSE and PCC, then uses XAB listening tests for emotion similarity (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf).
 
@@ -176,6 +176,8 @@ The new semi-supervised and hybrid sources sharpen the same caution: [[sgevc]] h
 - [[natural-language-emotion-control]]
 - [[emotion2vec]]
 - [[speaker-similarity-metrics]]
+- [[objective-speech-evaluation-metrics]]
+- [[source-reliability-notes]]
 - [[emodiff]]
 - [[soft-label-guidance]]
 - [[hierarchical-emotion-rendering]]

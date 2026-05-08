@@ -1,2 +1,0 @@
-model_variant,intensity_mode,intensity_control,alpha,speaker_cosine,speaker_ref_cosine,emotion_acc,emotion_conf,emotion_ref_cosine,emotion_src_cosine
-epoch_00025,inferred,style,0.8,0.7132004535570741,0.7172389497980476,0.545,0.5426142357249591,0.48032567103917245,-0.11470561509995605

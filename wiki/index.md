@@ -90,6 +90,7 @@
 - [[mutual-information-disentanglement]] - Reducing statistical dependence between speaker and emotion representations.
 - [[natural-language-emotion-control]] - Prompt-based control of target emotional expression in TTS or EVC.
 - [[non-parallel-voice-conversion]] - Voice conversion trained without paired source-target utterances.
+- [[objective-speech-evaluation-metrics]] - Glossary of objective and semi-objective speech metrics used for quality, content, speaker, emotion, and prosody evaluation.
 - [[parallel-emotional-speech-data]] - Matched emotional utterance data used by Seq2Seq EVC and limited by scarcity and collection cost.
 - [[relative-attributes-for-emotion-intensity]] - Ranking-based representation for emotion intensity without explicit intensity labels.
 - [[sequence-to-sequence-emotional-voice-conversion]] - EVC approach that jointly models acoustic conversion and duration alignment.
@@ -105,6 +106,7 @@
 - [[speaker-similarity-metrics]] - Speaker-side metrics such as EER, speaker classification accuracy, sMOS, SMOS, and SECS.
 - [[ssl-disentanglement-for-sec]] - Self-supervised disentanglement of lexical, speaker, and emotion factors for speech emotion conversion.
 - [[spectrum-prosody-conversion]] - Joint research concern of transforming spectral and prosodic emotion cues.
+- [[source-reliability-notes]] - Central cautions for sources with metadata contradictions, task mismatch, proxy-metric limitations, or synthetic-data caveats.
 - [[speech-anonymisation]] - Modifying speech to remove speaker identity while preserving content.
 - [[speaker-identity-evaluation-in-evc]] - Metrics and evidence for speaker preservation, similarity, or anonymisation in emotional voice conversion.
 - [[stargan-v2]] - Multi-domain style transfer GAN adapted by StarGANv2-VC.
@@ -128,3 +130,4 @@
 
 - [Experiment wiki index](../exp_wiki/index.md) - Table of contents for analyses derived from `research_mindhub/exp/`.
 - [Model inferred intensity alpha critique](../exp_wiki/model-inferred-intensity-alpha-critique.md) - Critique of the `MODEL_inferred_intensity` epoch and alpha sweeps, focused on emotion accuracy versus speaker drift.
+- [Model inferred intensity gap analysis](../exp_wiki/model-inferred-intensity-gap-analysis.md) - Cross-condition critique of ESD SSST/DSST, CREMA-D runs, listening-study evidence, and missing analyses.

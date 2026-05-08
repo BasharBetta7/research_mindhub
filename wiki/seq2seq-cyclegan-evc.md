@@ -6,13 +6,15 @@
 - Didi+et+al.pdf
 - Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-07
 
 ---
 
 ## Caution
 
 The Didi et al. source describes ESD as containing recordings from over 300 speakers, but the canonical ESD paper reports 10 native English speakers and 10 native Chinese speakers (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). This contradiction means Didi et al. should be used cautiously for architectural ideas and reported metrics, not as authority on ESD metadata (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
+
+The caution is centralized in [[source-reliability-notes]] so future pages can cite the reliability issue without repeating the full contradiction.
 
 ## Method
 
@@ -40,3 +42,4 @@ Didi et al. is relevant to [[speaker-emotion-tradeoff]] because it reports speak
 - [[evaluation-metrics-for-voice-conversion]]
 - [[f0-pitch-contour-in-voice-conversion]]
 - [[esd-dataset]]
+- [[source-reliability-notes]]

@@ -11,4 +11,4 @@
 ## Critiques
 
 - [[model-inferred-intensity-alpha-critique]] - Critique of the `MODEL_inferred_intensity` epoch and alpha sweeps, focusing on the emotion-speaker tradeoff under inferred style intensity control.
-
+- [[model-inferred-intensity-gap-analysis]] - Cross-condition critique of ESD SSST/DSST, CREMA-D pretrained/finetuned runs, listening-study support, and remaining research gaps.

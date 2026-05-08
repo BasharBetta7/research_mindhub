@@ -8,6 +8,19 @@
 
 ---
 
+**Timestamp**: [07-05-2026 21:35]
+
+- Ran a second critique pass on expanded `exp/MODEL_inferred_intensity` outputs.
+- Created `exp_wiki/model-inferred-intensity-gap-analysis.md` covering ESD SSST/DSST, CREMA-D pretrained and finetuned conditions, listening-study evidence, baseline gaps, metric gaps, and recommended next analyses.
+- Updated `exp_wiki/index.md` and [[index]] with the new experiment critique page.
+
+**Timestamp**: [07-05-2026 18:17]
+
+- Applied wiki audit cleanup.
+- Created [[objective-speech-evaluation-metrics]] as a compact glossary for recurring speech quality, content, speaker, emotion, and prosody metrics.
+- Created [[source-reliability-notes]] to centralize the Didi/ESD metadata contradiction, task-mismatch cautions, proxy-metric cautions, and synthetic-data caveats.
+- Updated [[evaluation-metrics-for-voice-conversion]], [[speaker-similarity-metrics]], [[seq2seq-cyclegan-evc]], [[esd-dataset]], and [[index]] with links to the new pages.
+
 **Timestamp**: [07-05-2026 14:06]
 
 - Updated `exp_wiki/model-inferred-intensity-alpha-critique.md` to embed and analyze experiment plots from `exp/MODEL_inferred_intensity`.

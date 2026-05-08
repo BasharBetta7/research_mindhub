@@ -8,7 +8,7 @@
 - Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
 - Didi+et+al.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-07
 
 ---
 
@@ -32,6 +32,8 @@ The canonical ESD paper reports that happy and surprise generally show higher F0
 
 The Didi et al. source states that ESD contains recordings from over 300 speakers, which conflicts with the canonical 20-speaker description from Zhou et al. 2022 (source: Didi+et+al.pdf; source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf). Treat the 20-speaker description as the canonical ESD metadata unless a separate dataset version is explicitly documented (source: Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf).
 
+This contradiction is tracked centrally in [[source-reliability-notes]].
+
 ## Related pages
 
 - [[zhou-2022-evc-theory-esd]]
@@ -43,3 +45,4 @@ The Didi et al. source states that ESD contains recordings from over 300 speaker
 - [[deepest]]
 - [[sgevc]]
 - [[seq2seq-cyclegan-evc]]
+- [[source-reliability-notes]]
