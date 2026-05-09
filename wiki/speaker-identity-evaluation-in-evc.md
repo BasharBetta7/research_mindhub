@@ -19,8 +19,9 @@
 - Zhou et al. - 2022 - Emotional voice conversion Theory, databases and ESD.pdf
 - Zhu et al. - 2023 - Emotional Voice Conversion with Semi-Supervised Generative Modeling.pdf
 - Didi+et+al.pdf
+- Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-08
 
 ---
 
@@ -62,13 +63,15 @@ Speaker identity evaluation in EVC asks whether emotion conversion preserves, ch
 
 [[clapfm-evc]] is direct EVC evidence for flexible emotion control, but its main reported tables use MCD, RMSE, CER, UTMOS, nMOS, EECS, and eMOS rather than explicit speaker-similarity metrics such as SECS, sMOS, or EER (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf). It should therefore be treated as partial evidence for speaker identity preservation until speaker-side evaluation is added or found (source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf).
 
+[[promptevc]] includes a speaker encoder with an F0 constraint and reports that removing the speaker encoder increases RMSE-F0 in the ablation study (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf). This is useful method evidence for identity preservation, but it remains partial because RMSE-F0 is not a dedicated speaker-similarity metric and the main table does not report SECS, EER, or sMOS (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf).
+
 [[diemo-tts]] is adjacent TTS evidence rather than EVC evidence, but it directly evaluates speaker similarity and emotion similarity in cross-speaker emotion transfer using sMOS, eMOS, SECS, and EECS (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf). Its full system reports cross-speaker nMOS 4.23, sMOS 3.96, eMOS 4.07, SECS 0.8505, and EECS 0.4527 in the ablation table (source: Cho et al. - 2025 - DiEmo-TTS Disentangled Emotion Representations via Self-Supervised Distillation for Cross-Speaker E.pdf).
 
 [[hierarchical-emotion-rendering]] is TTS-adjacent evidence that speaker similarity can be reported alongside fine-grained emotion-control metrics, but it should not be treated as EVC speaker-preservation evidence because it does not convert source speech into target emotional speech (source: Inoue et al. - 2025 - Hierarchical Control of Emotion Rendering in Speech Synthesis.pdf).
 
 ## Gap
 
-The wiki does not yet contain a study that directly sweeps target emotion intensity or conversion strength and measures speaker similarity at each point. Current papers mostly compare systems, endpoints, or ablations rather than a controlled speaker-emotion frontier (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf; source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf; source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf; source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf). A claim such as "stronger emotion causes speaker drift" should be marked as needing verification until a controlled frontier experiment is available.
+The wiki does not yet contain a study that directly sweeps target emotion intensity or conversion strength and measures speaker similarity at each point. Current papers mostly compare systems, endpoints, or ablations rather than a controlled speaker-emotion frontier (source: Ghosh et al. - 2023 - Emo-StarGAN A Semi-Supervised Any-to-Many Non-Parallel Emotion-Preserving Voice Conversion.pdf; source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf; source: Pan et al. - 2025 - ClapFM-EVC High-Fidelity and Flexible Emotional Voice Conversion with Dual Control from Natural Lan.pdf; source: Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf; source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf). A claim such as "stronger emotion causes speaker drift" should be marked as needing verification until a controlled frontier experiment is available.
 
 ## Related pages
 
@@ -82,6 +85,7 @@ The wiki does not yet contain a study that directly sweeps target emotion intens
 - [[time-varying-timbre-tokens]]
 - [[adversarial-source-classifier-loss]]
 - [[clapfm-evc]]
+- [[promptevc]]
 - [[diemo-tts]]
 - [[cross-speaker-emotion-transfer]]
 - [[speaker-similarity-metrics]]

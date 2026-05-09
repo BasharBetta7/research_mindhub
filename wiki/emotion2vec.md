@@ -6,14 +6,17 @@
 - Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf
 - Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf
 - Zhao et al. - 2024 - Temporal-Frequency State Space Duality An Efficient Paradigm for Speech Emotion Recognition.pdf
+- Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-08
 
 ---
 
 ## Definition
 
 Emotion2vec provides speech emotion embeddings that can be used for emotion similarity or emotion consistency evaluation (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf; source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf). In [[pflow-vc]], an emotion2vec-derived emotion consistency score is used to evaluate emotion style transfer (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
+
+In [[promptevc]], Emotion2Vec is used to extract reference emotion embeddings that train the diffusion-based prompt mapper, aligning natural-language prompt embeddings with speech emotion representations (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf). This is a training-time use of Emotion2Vec as a cross-modal emotional representation rather than only an evaluation metric (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf).
 
 ## Evaluation Caution
 
@@ -26,6 +29,7 @@ Emotion2vec provides speech emotion embeddings that can be used for emotion simi
 - [[evaluation-metrics-for-voice-conversion]]
 - [[ser-perceptual-loss]]
 - [[emovoice]]
+- [[promptevc]]
 - [[pflow-vc]]
 - [[tf-mamba-ser]]
 - [[temporal-frequency-ser]]

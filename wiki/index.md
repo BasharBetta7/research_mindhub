@@ -4,7 +4,7 @@
 
 **Sources**: Personal wiki metadata.
 
-**Last updated**: 2026-05-07
+**Last updated**: 2026-05-08
 
 ---
 
@@ -30,6 +30,7 @@
 - [[einet]] - Summary of Qi et al. 2024, the Emotional Intensity-aware Network for controllable realistic EVC.
 - [[pflow-vc]] - Summary of Zuo et al. 2025, the PFlow-VC paper for expressive VC with pitch-conditioned flow matching.
 - [[prabhu-2023-in-the-wild-sec]] - Summary of Prabhu et al. 2023, the SSL-disentangled in-the-wild speech emotion conversion paper.
+- [[promptevc]] - Summary of Qi et al. 2025, the prompt-controlled emotional voice conversion paper using natural-language emotion descriptions.
 - [[seq2seq-cyclegan-evc]] - Summary of Didi et al. 2025, the hybrid Seq2Seq and CycleGAN EVC paper, with an ESD metadata caution.
 - [[sgevc]] - Summary of Zhu et al. 2023, the semi-supervised generative EVC paper using explicit speaker and emotion variables.
 - [[starganv2-vc]] - Summary of Li et al. 2021, the StarGANv2-VC paper for unsupervised non-parallel many-to-many voice conversion.

@@ -17,8 +17,9 @@
 - Prabhu et al. - 2023 - In-the-wild Speech Emotion Conversion Using Disentangled Self-Supervised Representations and Neural.pdf
 - Qi et al. - 2024 - Towards Realistic Emotional Voice Conversion using Controllable Emotional Intensity.pdf
 - Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf
+- Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf
 
-**Last updated**: 2026-05-06
+**Last updated**: 2026-05-08
 
 ---
 
@@ -33,6 +34,8 @@ The paper explicitly rejects reducing emotion intensity to loudness alone, becau
 The earlier [[transforming-spectrum-and-prosody-for-evc]] paper supports this view by treating F0 as hierarchical prosody and decomposing it with CWT across temporal scales (source: Zhou et al. - 2020 - Transforming Spectrum and Prosody for Emotional Voice Conversion with Non-Parallel Training Data.pdf).
 
 [[freestyle-emotion-prompting]] is related but not identical to scalar intensity control, because a natural-language description can specify affective stance, vocal quality, and intensity-like nuance without an explicit numeric intensity value (source: Yang et al. - 2025 - EmoVoice LLM-based Emotional Text-To-Speech Model with Freestyle Text Prompting.pdf).
+
+[[promptevc]] provides direct EVC evidence for prompt-mediated intensity control: emotional intensity is one of several target attributes described by natural-language prompts, alongside mixed emotion, pitch, speaking speed, and volume (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf). The paper derives low, medium, and high emotional intensity levels with relative attribute ranking and evaluates whether generated speech matches the requested intensity category (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf).
 
 [[arousal-based-emotion-control]] is another route to intensity control: [[emoconv-diff]] uses continuous arousal values from 1 to 7 as target emotion conditioning (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf). This is useful for activation strength, but it does not fully model valence or categorical emotion identity (source: Prabhu et al. - 2024 - EMOCONV-DIFF Diffusion-based Speech Emotion Conversion for Non-parallel and In-the-wild Data.pdf).
 
@@ -56,6 +59,8 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 
 [[diffevc]] provides another direct EVC route to intensity-like control through [[expressive-guidance]], where the diffusion sampling condition is pushed toward the target reference emotion with a tunable guidance scale (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf). This differs from label interpolation because the control operates through positive and negative speaker-emotion conditions during sampling, so it should be evaluated together with speaker-similarity metrics (source: Chou et al. - 2025 - ZSDEVC Zero-Shot Diffusion-based Emotional Voice Conversion with Disentangled Mechanism.pdf).
 
+PromptEVC differs from scalar intensity-control systems such as [[emovox]] and [[einet]] because the user specifies intensity through text rather than a numeric value (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf). This makes it useful for realistic user control, but harder to compare with scalar alpha sweeps unless the prompts are standardized into low, medium, and high intensity categories (source: Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf).
+
 [[durflex-evc]] does not present an explicit scalar intensity control interface, but it is relevant because [[duration-flexible-evc]] models rhythm and duration, both of which can carry perceived intensity (source: Oh et al. - 2025 - DurFlex-EVC Duration-Flexible Emotional Voice Conversion Leveraging Discrete Representations withou.pdf). [[pflow-vc]] is also adjacent because its discrete pitch conditioning targets expressive prosody transfer rather than a named intensity control variable (source: Zuo et al. - 2025 - Enhancing Expressive Voice Conversion with Discrete Pitch-Conditioned Flow Matching Model.pdf).
 
 ## Related pages
@@ -68,6 +73,7 @@ The paper compares scaling-factor control, attention-weight control, and [[relat
 - [[cwt-f0-modelling]]
 - [[spectrum-prosody-conversion]]
 - [[freestyle-emotion-prompting]]
+- [[promptevc]]
 - [[emovoice]]
 - [[arousal-based-emotion-control]]
 - [[emoconv-diff]]

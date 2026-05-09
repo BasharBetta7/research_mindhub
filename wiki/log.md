@@ -4,9 +4,16 @@
 
 **Sources**: Personal wiki metadata.
 
-**Last updated**: 2026-05-07
+**Last updated**: 2026-05-08
 
 ---
+
+**Timestamp**: [08-05-2026 14:38]
+
+- Ingested `Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf`.
+- Created source summary page [[promptevc]].
+- Updated existing pages: [[natural-language-emotion-control]], [[freestyle-emotion-prompting]], [[emotion2vec]], [[emotion-intensity-control]], [[speaker-identity-evaluation-in-evc]], and [[index]].
+- Updated `../sources.bib` with a BibTeX entry for PromptEVC.
 
 **Timestamp**: [07-05-2026 21:35]
 

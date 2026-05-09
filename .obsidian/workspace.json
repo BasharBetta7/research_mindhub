@@ -11,14 +11,10 @@
             "id": "f1e880b2a275aa65",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "exp_wiki/model-inferred-intensity-gap-analysis.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "model-inferred-intensity-gap-analysis"
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ]
@@ -185,8 +181,14 @@
   },
   "active": "f1e880b2a275aa65",
   "lastOpenFiles": [
-    "exp_wiki/index.md",
+    "wiki/emotional-speech-conversion.md",
+    "wiki/promptevc.md",
+    "raw/Qi et al. - 2025 - PromptEVC Controllable Emotional Voice Conversion with Natural Language Prompts.pdf",
+    "wiki/emotion-intensity-control.md",
+    "wiki/evaluation-metrics-for-voice-conversion.md",
+    "exp/MODEL_inferred_intensity/CREMA_D/finetuned/summary.md",
     "exp_wiki/model-inferred-intensity-gap-analysis.md",
+    "exp_wiki/index.md",
     "wiki/objective-speech-evaluation-metrics.md",
     "exp/MODEL_inferred_intensity/ESD/style_embedding_viz_epoch_00025/style_space_pca_by_speaker.png",
     "exp/MODEL_inferred_intensity/ESD/style_embedding_viz_epoch_00025/style_space_pca_by_emotion.png",
@@ -204,14 +206,12 @@
     "exp/MODEL_inferred_intensity/ESD/listening_study_results/user_votes_by_emotion_summary.csv",
     "exp/MODEL_inferred_intensity/ESD/listening_study_results/user_votes_by_alpha_summary.csv",
     "exp/MODEL_inferred_intensity/ESD/listening_study_results",
-    "exp/MODEL_inferred_intensity/ESD/intensity_per_sample_metrics.csv",
     "exp/MODEL_inferred_intensity/ESD/alpha_metrics_comparison.png",
     "exp/MODEL_inferred_intensity/ESD/SSST/smoke_alpha_variants/full_eval_epoch_00025_alpha_1.0_20260327_140719/random_sample_mel_triplet.png",
     "exp/MODEL_inferred_intensity/ESD/SSST/smoke_alpha_variants/full_eval_epoch_00025_alpha_1.0_20260327_140719/plots/speaker_metrics_per_emotion_label.png",
     "exp/MODEL_inferred_intensity/ESD/SSST/full_set_alpha_variants/summary.md",
     "exp/MODEL_inferred_intensity/ESD/DSST/summary.md",
     "exp/MODEL_inferred_intensity/CREMA_D/pretrained/summary.md",
-    "exp/MODEL_inferred_intensity/CREMA_D/finetuned/summary.md",
     "exp/MODEL_inferred_intensity/CREMA_D/finetuned/epoch75/summary.md",
     "wiki/log.md",
     "wiki/index.md",
@@ -226,10 +226,6 @@
     "wiki/sgevc.md",
     "wiki/zhou-2022-evc-theory-esd.md",
     "wiki/textless-emotion-conversion.md",
-    "wiki/zero-shot-audio-to-audio-emotion-transfer.md",
-    "wiki/mutual-information-disentanglement.md",
-    "wiki/expressive-guidance.md",
-    "wiki/textless-speech-emotion-conversion.md",
-    "wiki/zest.md"
+    "wiki/zero-shot-audio-to-audio-emotion-transfer.md"
   ]
 }

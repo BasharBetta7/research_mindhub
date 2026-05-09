@@ -131,6 +131,7 @@ When the user asks you to `run critique`:
 - Injest the results of critique into markdown pages inside `exp_wiki`. You can use cross references to `wiki/`, but don't mix experiment analysis with general raw sources injestion.
 - It is important to analyze csv files, and use availabel plots in your injestion.
 
+
 ## Rules
 - Never modify anything in the `raw/` and `exp/` folders.
     
