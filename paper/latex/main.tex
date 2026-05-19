@@ -1,0 +1,65 @@
+\documentclass{ieeeaccess}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{arydshln}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2026.DOI}
+
+\title{Measuring the Emotion--Speaker Tradeoff Frontier in Emotional Voice Conversion}
+
+\author{\uppercase{Bashar M.Deeb}\authorrefmark{1}}
+\address[1]{Department, University, City, Country (e-mail: author@example.com)}
+\corresp{Corresponding author: Bashar N. Placeholder (e-mail: author@example.com).}
+
+\begin{abstract}
+Emotional voice conversion aims to modify the perceived emotion of speech while preserving linguistic content and speaker identity.
+This paper studies emotional conversion as an intensity-conditioned frontier between target-emotion strength and speaker preservation.
+We distinguish inferred intensity sweeps, which traverse an existing style representation after training, from native intensity sweeps, which use a learned intensity-control mechanism inside a StarGANv2-VC-based architecture.
+We evaluate the resulting frontier on ESD and CREMA-D from-scratch settings using emotion-side metrics, speaker-side metrics, speaker-related ablations, model-comparison significance tests, and a listening study where available.
+Across ESD conditions, stronger emotion control improves emotion-side metrics while reducing source-speaker similarity, and the ESD single-speaker listening study shows the same perceptual direction.
+CREMA-D from-scratch results behave as a harder stress test rather than as a clean replication of ESD.
+Speaker-related ablations show that additional speaker supervision is not automatically beneficial: it can shift the operating curve, improve some speaker-side metrics, and still reduce continuous emotion-similarity metrics.
+The results support reporting emotional voice conversion as a frontier over intensity rather than as independent aggregate emotion and speaker scores.
+\end{abstract}
+
+\begin{keywords}
+Emotional voice conversion, emotion intensity, speaker identity, speaker similarity, voice conversion, evaluation.
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+\input{sections/01-introduction}
+\input{sections/02-related-work}
+\input{sections/03-method}
+\input{sections/04-results}
+\input{sections/05-discussion}
+\input{sections/06-conclusion}
+
+\section*{Acknowledgment}
+The authors thank the participants in the listening study.
+
+\bibliographystyle{IEEEtran}
+\bibliography{../../sources}
+
+\begin{IEEEbiography}{Bashar N. Placeholder}
+Biography text will be added before submission.
+\end{IEEEbiography}
+
+\EOD
+
+\end{document}

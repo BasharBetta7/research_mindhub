@@ -1,0 +1,14 @@
+\section{Limitations}
+\label{sec:limitations}
+
+The conclusions should be read within the scope of the available automatic metrics, internal baselines, and limited perceptual evidence.
+The ESD SSST and DSST results provide the clearest evidence for an alpha-conditioned emotion--speaker frontier, while CREMA-D from scratch is better interpreted as a stress test than as a stable cross-dataset confirmation.
+The current CREMA-D from-scratch results also show label-specific instability, especially for the native-ranker epoch-30 condition, so they should not be used to claim robust CREMA-D emotion control.
+
+The speaker metrics are based on speaker embeddings and cosine similarity, which are useful but not identical to human judgments of speaker identity.
+Likewise, the emotion-side automatic metrics depend on a frozen emotion model and should be paired with listening tests before making strong perceptual claims.
+The available listening study supports the ESD SSST frontier direction, but it does not yet cover DSST, CREMA-D, or all ablation branches.
+
+The model-comparison significance tests are paired over samples and alpha values, not over multiple independent training seeds.
+They support differences between evaluated outputs under the tested checkpoints, but they do not prove that a specific loss term is causally responsible across random seeds or datasets.
+Future work should add seed-level replication, perceptual tests for the DSST and CREMA-D conditions, and external EVC systems beyond the internal StarGAN-style and CycleGAN baselines.

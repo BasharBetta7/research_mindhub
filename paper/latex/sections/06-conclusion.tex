@@ -1,0 +1,12 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper frames emotional voice conversion as an intensity-conditioned speaker--emotion frontier.
+The central claim is methodological: EVC systems should be evaluated across target-emotion strength, because a single aggregate emotion score can hide how speaker preservation changes across operating points.
+Current experiments show a clear frontier on ESD, especially in DSST, while CREMA-D from scratch behaves as a harder stress test with less stable emotion control.
+CycleGAN provides a useful high-emotion, higher-drift baseline from a different model family, and the ablations show that design choices move systems into different regions of the frontier.
+
+The proposed native-intensity StarGANv2-VC model is a step toward controllable emotional conversion that can be evaluated explicitly as a frontier.
+Speaker-related ablations further show how targeted supervision can shift the operating curve, but the paired significance tests show that these shifts are metric-specific rather than uniformly beneficial.
+The broader recommendation is that future EVC work should report emotion strength and speaker preservation jointly, supported by automatic metrics, per-emotion analysis, style-space leakage checks, and perceptual studies.
+The final manuscript should foreground the frontier plots, per-emotion plots, and listening-study curves as the primary evidence for the speaker--emotion tradeoff.

@@ -1,0 +1,82 @@
+\section{Related Work}
+\label{sec:related-work}
+
+\subsection{Emotional Voice Conversion}
+EVC extends voice conversion by requiring a generated utterance to match a target emotion while preserving linguistic content and speaker identity.
+Early non-parallel EVC work transformed spectral and prosodic features such as F0 with CycleGAN-style training \cite{zhou2020transforming}.
+The ESD corpus and related EVC studies made cross-emotion and cross-speaker emotional style transfer a central benchmark setting \cite{zhou2021seen,zhou2022evctheoryesd}.
+StarGANv2-VC later provided a strong non-parallel many-to-many voice conversion backbone based on style encoders, mapping networks, F0 conditioning, and adversarial/perceptual losses \cite{li2021starganv2vc}.
+
+Recent EVC systems increasingly separate content, speaker, and emotion factors.
+Examples include semi-supervised emotion-preserving conversion \cite{ghosh2023emostargan}, speaker-independent disentangled EVC \cite{chen2022sievc}, dual-domain adversarial EVC for unseen speaker-emotion pairs \cite{shah2023evcusep}, diffusion-based EVC with speaker-emotion disentanglement \cite{chou2024diffevc}, and zero-shot audio-to-audio emotion transfer \cite{dutta2024zest}.
+These systems show a clear trend toward factorized emotion and speaker modeling, but most evaluations still report emotion and speaker performance at fixed operating points rather than sweeping target-emotion strength and reporting the resulting speaker-preservation curve.
+
+\subsection{Emotion Intensity Control}
+Emotion intensity control aims to generate different strengths of the same target emotion.
+Zhou et al. model emotion intensity with relative attributes and argue that intensity affects multiple acoustic dimensions rather than loudness alone \cite{zhou2023emotionintensity}.
+Other recent work controls emotional strength through arousal values, prompt attributes, adaptive intensity gates, soft-label guidance, or expressive guidance \cite{prabhu2023inthewildsec,qi2024einet,pan2025clapfmevc,guo2023emodiff,chou2024diffevc}.
+These studies support the idea that emotional expression can be treated as a controllable axis.
+
+Interpolating between neutral and a target emotion is therefore a reasonable intensity-control model when the interpolation is interpreted as a traversal from low target-emotion activation to stronger target-emotion activation, rather than as a claim that perception is exactly linear.
+The strongest EVC-specific justification comes from relative-attribute intensity modeling: neutral speech is treated as a zero-intensity anchor, emotional speech is ranked above neutral speech for the corresponding category, and the learned intensity value is normalized on a continuous scale \cite{zhou2023emotionintensity}.
+This makes a neutral-to-target path a practical approximation of increasing emotion strength, especially in corpora such as ESD where neutral and emotional renditions are available as parallel emotion categories \cite{zhou2021seen,zhou2022evctheoryesd}.
+
+Emotion intensity is expressed through coordinated changes in energy, F0, rhythm, speech rate, and prosodic dynamics, so an intermediate point between neutral and target emotion can be interpreted as partial activation of the acoustic cues associated with that target emotion \cite{zhou2023emotionintensity,zhou2020transforming}.
+VAD-based intensity control gives a complementary view: target emotion strength can be represented by continuous affective coordinates rather than only by a hard class label \cite{qi2024einet}.
+In generative speech models, neutral-target mixing has also been used explicitly: EmoDiff controls emotional TTS intensity by mixing target and neutral emotions during soft-label guidance, and EmoMix synthesizes mixed emotional speech by combining neutral and primary-emotion diffusion conditions \cite{guo2023emodiff,tang2023emomix}.
+These works do not prove that every latent interpolation is perceptually linear, but they support neutral-to-target interpolation as a meaningful experimental probe of controllable emotion strength.
+What remains less explored is how this increasing target-emotion strength interacts with speaker preservation across the full interpolation path.
+
+\subsection{Speaker Preservation and Speaker Leakage}
+Speaker preservation is commonly measured with speaker verification or speaker-embedding similarity metrics.
+In voice conversion, speaker identity is not a single isolated factor; it overlaps with source/filter properties, prosody, and speaking style \cite{sansegundo2017euclidean,belyk2022vocal}.
+This overlap makes speaker leakage plausible in EVC: style or emotion representations may carry speaker-specific information, and speaker embeddings may carry emotion-related cues.
+
+Disentanglement methods try to reduce such leakage.
+AutoVC uses an information bottleneck to remove speaker information from content codes \cite{qian2019autovc}.
+StarGANv2-VC uses adversarial source classification and perceptual losses to improve target speaker similarity \cite{li2021starganv2vc}.
+DiffEVC and ZEST explicitly target speaker-emotion disentanglement with mutual-information or adversarial mechanisms \cite{chou2024diffevc,dutta2024zest}.
+These methods support the need to inspect style spaces and speaker metrics together rather than treating emotion accuracy alone as sufficient.
+
+\subsection{Evaluation of EVC Systems}
+EVC evaluations typically combine objective metrics with subjective listening tests.
+Emotion-side metrics include emotion classification accuracy, emotion embeddings, or emotion similarity ratings.
+Speaker-side metrics include speaker classification accuracy, speaker embedding cosine similarity, speaker MOS, or speaker verification metrics.
+Several recent systems report both emotion and speaker measurements \cite{oh2025durflexevc,zuo2025pflowvc,shah2023evcusep,chou2024diffevc}, but reporting both metrics at one or a few operating points is not the same as tracing an intensity-conditioned tradeoff curve.
+
+This creates an evaluation gap for controllable EVC.
+If target-emotion strength is adjustable, then speaker preservation should also be evaluated across the control range, because a method may preserve speaker identity at weak emotion settings but drift at stronger settings.
+Per-emotion and perceptual evaluations are also important because aggregate automatic scores can hide emotion-specific failures and may not fully match listener judgments.
+
+\begin{table*}[t]
+\caption{Related-work positioning and evaluation gap.}
+\label{tab:related-work-gap}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.6pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllll@{}}
+\toprule
+Work & Family & Emotion Intensity Control & Speaker side & Speaker-Emotion Frontier \\
+\midrule
+AutoVC \cite{qian2019autovc} & Autoencoder VC & Not available & Spk. bottleneck & Not reported \\
+Spectrum/prosody EVC \cite{zhou2020transforming} & CycleGAN EVC & Not available & Spk./quality metrics & Not reported \\
+DiffEVC \cite{chou2024diffevc} & Diffusion EVC & Expressive guidance & Spk.-emotion dis. & Not reported \\
+SIEVC \cite{chen2022sievc} & Disentangled EVC & Emotion class & Spk.-indep. repr. & Not reported \\
+DurFlex-EVC \cite{oh2025durflexevc} & Duration EVC & Not available & Spk./emotion metrics & Not reported \\
+EmoDiff \cite{guo2023emodiff} & Emotional TTS & Soft-label mix & TTS speaker setting & Not reported \\
+EmoMix \cite{tang2023emomix} & Emotional TTS & Neutral-emotion mix & TTS speaker setting & Not reported \\
+PFlow-VC \cite{zuo2025pflowvc} & Flow VC & Pitch conditioning & Spk./quality metrics & Not reported \\
+EINet \cite{qi2024einet} & Intensity EVC & VAD pseudo-intensity & Spk./quality metrics & Not reported \\
+ClapFM-EVC \cite{pan2025clapfmevc} & Prompt EVC & Intensity gate & Spk./quality metrics & Not reported \\
+Emotion intensity EVC \cite{zhou2023emotionintensity} & Seq2seq EVC & Relative attribute & Spk./quality metrics & Partial \\
+SSL arousal SEC \cite{prabhu2023inthewildsec} & SSL SEC & Arousal & Factor disentanglement & Not reported \\
+Emo-StarGAN \cite{ghosh2023emostargan} & StarGAN EVC & Emotion class & Emotion preservation & Not reported \\
+Dual-domain adv. EVC \cite{shah2023evcusep} & StarGAN EVC & Unseen pairs & Dual-domain adv. & Not reported \\
+StarGANv2-VC \cite{li2021starganv2vc} & Style VC & Not available & Spk. sim./MOS & Not reported \\
+ZEST \cite{dutta2024zest} & Zero-shot EVC & Reference transfer & Spk. preservation & Not reported \\
+\bottomrule
+\end{tabular*}
+\setlength{\tabcolsep}{6pt}
+\end{table*}
+
+Table~\ref{tab:related-work-gap} summarizes the gap: prior work motivates disentanglement, intensity control, and multi-metric evaluation, but intensity-conditioned emotion--speaker frontiers are not yet a standard reporting practice.

@@ -1,0 +1,414 @@
+\section{Problem Formulation}
+\label{sec:problem-formulation}
+
+\subsection{Generative EVC Task}
+We model an utterance as an acoustic realization of three main factors: linguistic content, speaker identity, and emotion.
+Let
+\begin{equation}
+x \sim p(x \mid c, s, e),
+\end{equation}
+where $c$ denotes linguistic content, $s$ denotes speaker identity, and $e$ denotes emotion.
+Given a source utterance $x_{\mathrm{src}}$ with factors $(c_{\mathrm{src}},s_{\mathrm{src}},e_{\mathrm{src}})$ and a reference utterance $x_{\mathrm{ref}}$ with factors $(c_{\mathrm{ref}},s_{\mathrm{ref}},e_{\mathrm{ref}})$, emotional voice conversion aims to generate a new utterance that keeps the source content and source speaker while adopting the reference emotion.
+
+We write the generated utterance as
+\begin{equation}
+\hat{x}_{\alpha}
+=G_\theta(x_{\mathrm{src}},x_{\mathrm{ref}},\alpha),
+\end{equation}
+where $G_\theta$ is the EVC model, characterized by parameters $\theta$, and $\alpha \in \mathcal{A}$ is an emotion-intensity control value.
+The intended factor-level behavior is
+\begin{equation}
+\hat{x}_{\alpha}
+\sim p(x \mid c_{\mathrm{src}},s_{\mathrm{src}},e_{\mathrm{ref}},\alpha).
+\end{equation}
+Thus, $\alpha$ should change the strength of the target emotion $e_{\mathrm{ref}}$ without changing the linguistic content or speaker identity inherited from $x_{\mathrm{src}}$.
+In practice, these factors are not directly observable and are not perfectly disentangled in speech representations, so the behavior must be measured with external emotion and speaker metrics.
+
+\subsection{Emotion-Speaker Frontier Hypothesis}
+For each generated utterance, we evaluate the conversion by computing an emotion-side metric and a speaker-side metric.
+Let
+\begin{equation}
+E_{\mathrm{ref}}(\hat{x}_{\alpha},x_{\mathrm{ref}})
+\end{equation}
+measure how well the generated utterance expresses the reference emotion, and let
+\begin{equation}
+S_{\mathrm{src}}(\hat{x}_{\alpha},x_{\mathrm{src}})
+\end{equation}
+measure how well it preserves the source speaker.
+The central hypothesis of this paper is that controllable EVC exposes a measurable emotion--speaker frontier: as the target-emotion intensity $\alpha$ changes, the generated utterance moves through joint operating points defined by emotion transfer and source-speaker preservation metrics.
+The desired direction is clear: stronger target-emotion expression should be achieved with as little speaker drift as possible.
+The frontier therefore provides a concrete way to compare models, datasets, emotion categories, and conversion conditions under the same evaluation question: how much speaker preservation is retained at each level of target-emotion strength?
+
+
+\subsection{Intensity-Conditioned Frontier}
+For each alpha value, we compute an emotion-side score $E_{\mathrm{ref}}(\hat{x}_{\alpha},x_{\mathrm{ref}})$ and a speaker-side score $S_{\mathrm{src}}(\hat{x}_{\alpha},x_{\mathrm{src}})$.
+The set of points
+\begin{equation}
+\mathcal{F}(G,x_{\mathrm{src}},x_{\mathrm{ref}})
+=
+\{(S_{\mathrm{src}}(\hat{x}_{\alpha},x_{\mathrm{src}}),
+E_{\mathrm{ref}}(\hat{x}_{\alpha},x_{\mathrm{ref}})) :
+\alpha \in \mathcal{A}\}
+\end{equation}
+defines the empirical emotion--speaker frontier for a model under a fixed source-reference condition.
+A useful EVC system should move toward stronger target emotion without unnecessarily reducing speaker preservation.
+
+This gives the paper its central research question:
+\begin{quote}
+\textbf{RQ.} In intensity-controllable EVC, does sweeping the target-emotion intensity $\alpha$ reveal a measurable frontier between target-emotion transfer and source-speaker preservation, and how does this frontier change across models, datasets, target emotions, and conversion settings?
+\end{quote}
+The experiments answer this question by estimating $\mathcal{F}$ for each evaluated system and comparing the resulting curves, endpoints, and per-emotion operating points.
+
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}[c][1.55in][c]{0.92\linewidth}
+\centering
+\textbf{Placeholder: frontier computation pipeline}\\
+source utterance + target emotion/reference + alpha sweep\\
+$\rightarrow$ generated samples $\rightarrow$ emotion model and speaker model\\
+$\rightarrow$ frontier points and endpoint/delta table
+\end{minipage}}
+\caption{Intensity-conditioned frontier computation. The same generated samples are evaluated with emotion-side and speaker-side metrics so that each alpha value becomes a joint operating point.}
+\label{fig:frontier-protocol}
+\end{figure}
+
+
+\section{Proposed Native-Intensity EVC Model}
+\label{sec:proposed-model}
+
+\subsection{Model architecture}
+The proposed model uses StarGANv2-VC as its conversion backbone.
+The backbone follows the style-based conversion paradigm: a generator receives source acoustic features and a target style representation, while style encoders or mapping networks provide target-domain style codes \cite{li2021starganv2vc}.
+While the original architecture is designed for speaker-domain voice conversion, we adapt it for emotion-domain voice conversion.
+In the present experiments, StarGAN-style models are evaluated with two configurations: inferred-intensity and native-intensity. Both relying on interpolation between neutral and target emotion style codes. 
+
+The inferred-intensity variant uses the original StarGANv2-VC architecture and losses, with a post-hoc interpolation direction defined by the difference between neutral and target emotion style codes, without explicit training of intensity in the style space.
+The native-intensity variant is the main modeling mechanism: it adds a ranking head that makes target-emotion intensity trainable in the style space, rather than using only a post-hoc interpolation direction.
+
+\subsection{Native Intensity Ranker}
+Let $\mathcal{Y}$ be the set of emotion domains.
+We separate it into the neutral domain and the non-neutral target-emotion domains:
+\begin{equation}
+\mathcal{Y}=\mathcal{Y}_{0}\cup\mathcal{Y}_{+},\qquad
+\mathcal{Y}_{0}=\{y_{\mathrm{neu}}\},\qquad
+\mathcal{Y}_{+}=\mathcal{Y}\setminus\mathcal{Y}_{0}.
+\end{equation}
+For each target emotion $e\in\mathcal{Y}_{+}$, the native-intensity model learns an ordering over style codes in which neutral style codes receive lower ranks than style codes expressing $e$.
+Let $E_{\text{s}}(x,y)$ be the style encoder and let $s=E_{\text{s}}(x,y)\in\mathbb{R}^{d}$ be the style code for emotion domain $y$.
+The native-intensity model adds an emotion-specific ranking head 
+\begin{equation}
+R(s)=\left[r_1(s),\ldots,r_K(s)\right],
+\end{equation}
+where $K$ is the number of emotion domains and $r_e(s)$ is the scalar rank score for target emotion $e$.
+The intended ranker property is
+\begin{equation}
+r_e\!\left(E_{\text{s}}(x_{\mathrm{emo}},e)\right)
+>
+r_e\!\left(E_{\text{s}}(x_{\mathrm{neu}},y_{\mathrm{neu}})\right) + m,
+\qquad e\in\mathcal{Y}_{+} ,
+\end{equation}
+Where $m$ is a margin hyperparameter. The ranker enforces a neutral-to-target ordering in the style space. the style encoder is not only asked to reconstruct style, but is also regularized so that each target emotion has a measurable intensity direction anchored at neutral speech.
+
+For a parallel neutral-emotional training pair $(x_{\mathrm{neu}},x_{\mathrm{emo}})$ with target emotion $e$, define
+\begin{equation}
+s_0=E_{\text{s}}(x_{\mathrm{neu}},y_{\mathrm{neu}}),\qquad
+s_1=E_{\text{s}}(x_{\mathrm{emo}},e).
+\end{equation}
+The ranker is trained with three constraints.
+First, emotional speech should outrank neutral speech by a specified margin.
+\begin{equation}
+\mathcal{L}_{\mathrm{rank}}
+=
+\mathbb{E}_{s_0,s_1}\left[
+\max\left(0,m-\left(r_e(s_1)-r_e(s_0)\right)\right)
+\right].
+\end{equation}
+Second, to make $\alpha$ meaningful as a continuous control, the model must also learn how rank changes along the path between the two endpoints. This can be achieved by sampling an interpolation point $s_\alpha$ between $s_0$ and $s_1$ and training the ranker so that the normalized rank $\hat{\alpha}$ of $s_\alpha$ matches the interpolation weight $\alpha$.
+\begin{equation}
+s_\alpha=(1-\alpha)s_0+\alpha s_1,\qquad \alpha\sim U(0,1),
+\end{equation}
+should have normalized rank intensity close to $\alpha$.
+The interpolation loss turns the ranker from a binary neutral/emotional separator into a calibrated intensity estimator along the neutral-to-emotion segment:
+\begin{equation}
+\hat{\alpha}
+=
+\frac{r_e(s_\alpha)-r_e(s_0)}
+{\left|r_e(s_1)-r_e(s_0)\right|+\epsilon},
+\qquad
+\mathcal{L}_{\mathrm{interp}}
+=
+\mathbb{E}\left[|\hat{\alpha}-\alpha|\right].
+\end{equation}
+Third, the rank should be monotonic along the neutral-to-emotion path.
+Without a monotonicity constraint, the ranker could satisfy the endpoint and interpolation objectives on average while still assigning locally decreasing scores to higher-intensity mixtures.
+That would make alpha sweeps unstable, because increasing $\alpha$ would not necessarily correspond to increasing target-emotion rank.
+The monotonicity loss therefore enforces the ordering relation
+\begin{equation}
+\alpha_l<\alpha_h
+\quad\Longrightarrow\quad
+r_e(s_{\alpha_l}) < r_e(s_{\alpha_h})
+\end{equation}
+up to a margin:
+\begin{equation}
+\mathcal{L}_{\mathrm{mono}}
+=
+\mathbb{E}\left[
+\max\left(0,m_{\alpha}-r_e(s_{\alpha_h})+r_e(s_{\alpha_l})\right)
+\right],
+\quad \alpha_l<\alpha_h .
+\end{equation}
+The overall native ranking objective is
+\begin{equation}
+\mathcal{L}_{\mathrm{int}}
+=
+\lambda_{\mathrm{rank}}\mathcal{L}_{\mathrm{rank}}
++
+\lambda_{\mathrm{interp}}\mathcal{L}_{\mathrm{interp}}
++
+\lambda_{\mathrm{mono}}\mathcal{L}_{\mathrm{mono}} .
+\end{equation}
+In the implementation, we set $m=0.2$, $m_{\alpha}=0.05$, $\lambda_{\mathrm{rank}}=0.2$, $\lambda_{\mathrm{interp}}=0.2$, and $\lambda_{\mathrm{mono}}=0.1$.
+
+\subsection{Speaker-Related Ablations}
+We experiment with two model variants to enhance speaker preservation, and add their results as ablations to the main native-intensity model.
+
+The first variant  adds a speaker-contrastive loss to discourage speaker leakage in the emotional style representation. The idea is to prevent speaker-related information from clustering within each emotion category in the style space, hence encouraging the model to minimize speaker-drift.
+For a minibatch of style embeddings, this loss pull positive pairs $ P(i) $ -- samples with the same emotion and different speakers -- together, while pushing negative pairs $ N(i) $ -- samples with different emotions -- apart.
+The proposed loss uses a supervised contrastive form with temperature $\tau$:
+\begin{align}
+\mathcal{L}_{\mathrm{spk}}
+=&
+-\frac{1}{|\mathcal{I}|}
+\sum_{i\in\mathcal{I}}
+\frac{1}{|P(i)|}
+\sum_{p\in P(i)}
+\log q_{ip},
+\nonumber\\
+q_{ip}
+=&
+\frac{\exp(s_i^\top s_p/\tau)}
+{\sum_{j\in P(i)\cup N(i)}\exp(s_i^\top s_j/\tau)} .
+\end{align}
+Here $\mathcal{I}$ is the set of minibatch indices, $P(i)$ contains same-emotion, different-speaker positives for anchor sample $i$, $N(i)$ contains different-emotion negatives, $p$ indexes a positive sample, $j$ indexes all contrastive comparison samples, and $\tau$ is the temperature controlling the sharpness of the contrastive distribution.
+This objective encourages emotional style representations to cluster by emotion across speakers rather than by speaker identity.
+This loss is motivated by the broader evidence that speaker and emotion factors are not automatically disentangled in learned speech representations \cite{qian2019autovc,chou2024diffevc,dutta2024zest,miao2024emotionpreservinganonymization}.
+
+The second variant uses a speaker classifier $C_{\text{sp}}$ that learns to identify the source speaker using a cross-entropy objective.
+Let $u$ denote a speaker label and let $h(x)$ be the acoustic representation passed to the classifier.
+The classifier is first trained on real speech as
+\begin{equation}
+\mathcal{L}_{\mathrm{spkcls}}^{C}
+=
+\mathbb{E}_{x,u}
+\left[
+\mathrm{CE}\left(C_{\text{sp}}(h(x)),u\right)
+\right].
+\end{equation}
+After this pretraining stage, $C_{\text{sp}}$ is frozen.
+During EVC training, $\hat{x}_{\alpha}=G_\theta(x_{\mathrm{src}},x_{\mathrm{ref}},\alpha)$ is encouraged to be assigned to the source speaker:
+\begin{align}
+\mathcal{L}_{\mathrm{spkcls}}^{G}
+&=
+\mathbb{E}_{x_{\mathrm{src}},x_{\mathrm{ref}},u_{\mathrm{src}},\alpha}
+\left[
+\mathrm{CE}\left(\hat{u}_{\alpha},u_{\mathrm{src}}\right)
+\right],
+\nonumber\\
+\hat{u}_{\alpha}
+&=
+C_{\text{sp}}\!\left(h(\hat{x}_{\alpha})\right).
+\end{align}
+It is included as a speaker-supervision ablation rather than as a proposed improvement.
+Its role is to test the simple hypothesis that adding a speaker-side objective improves the frontier; the results section shows why this hypothesis must be treated cautiously.
+
+\begin{figure}[t]
+\centering
+\fbox{\begin{minipage}[c][1.75in][c]{0.92\linewidth}
+\centering
+\textbf{Placeholder: proposed model architecture}\\
+StarGANv2-VC generator, style encoder/mapping network, native intensity ranker,\\
+alpha-controlled style interpolation, and optional speaker-related ablation branches.
+\end{minipage}}
+\caption{Native-intensity EVC architecture. The main figure should emphasize the native ranking head as the intensity-control mechanism and show speaker-related branches as ablations rather than guaranteed speaker-preservation mechanisms.}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Training Objective}
+The proposed native-intensity model keeps the common StarGANv2-VC losses and adds the native ranking objective.
+For the discriminator,
+\begin{equation}
+\mathcal{L}_{D}
+=
+\mathcal{L}_{\mathrm{real}}
++
+\mathcal{L}_{\mathrm{fake}}
++
+\lambda_{\mathrm{reg}}\mathcal{L}_{\mathrm{R1}}
++
+\lambda_{\mathrm{cls}}^{D}\mathcal{L}_{\mathrm{advcls}}^{D}
++
+\lambda_{\mathrm{con}}\mathcal{L}_{\mathrm{bCR}} ,
+\end{equation}
+where the terms denote real/fake adversarial losses, R1 regularization, adversarial source-classifier loss, and balanced consistency regularization.
+For the generator and style encoder,
+\begin{align}
+\mathcal{L}_{G}
+=&
+\lambda_{\mathrm{adv}}\mathcal{L}_{\mathrm{adv}}
++
+\lambda_{\mathrm{sty}}\mathcal{L}_{\mathrm{sty}}
+-
+\lambda_{\mathrm{ds}}\mathcal{L}_{\mathrm{ds}}
++
+\lambda_{\mathrm{cyc}}\mathcal{L}_{\mathrm{cyc}}
+\nonumber\\
+&
++
+\lambda_{\mathrm{norm}}\mathcal{L}_{\mathrm{norm}}
++
+\lambda_{\mathrm{asr}}\mathcal{L}_{\mathrm{asr}}
++
+\lambda_{\mathrm{F0}}\mathcal{L}_{\mathrm{F0}}
+\nonumber\\
+&
++
+\lambda_{\mathrm{F0sty}}\mathcal{L}_{\mathrm{F0sty}}
++
+\lambda_{\mathrm{cls}}^{G}\mathcal{L}_{\mathrm{advcls}}^{G}.
+\end{align}
+These terms respectively enforce target-domain realism, style reconstruction, style diversity, cycle reconstruction, energy/norm consistency, ASR-feature content consistency, F0 consistency, reference-style F0 consistency, and target-domain adversarial classification.
+The discriminator is optimized with $\mathcal{L}_{D}$.
+The generator, style encoder, and auxiliary heads of the native model are optimized with
+\begin{equation}
+\mathcal{L}_{G,\mathrm{native}} =
+\mathcal{L}_{G}
++
+\mathcal{L}_{\mathrm{int}},
+\end{equation}
+with separate optimizer steps for the backbone networks and the rank head.
+The speaker-contrastive ablation adds one term,
+\begin{equation}
+\mathcal{L}_{G,\mathrm{native+spk}} =
+\mathcal{L}_{G,\mathrm{native}}
++
+\lambda_{\mathrm{spk}}\mathcal{L}_{\mathrm{spk}},
+\end{equation}
+so its effect can be interpreted as a frontier shift relative to the native-intensity model.
+The speaker-classifier ablation instead uses the frozen classifier loss,
+\begin{equation}
+\mathcal{L}_{G,\mathrm{native+spkcls}} =
+\mathcal{L}_{G,\mathrm{native}}
++
+\lambda_{\mathrm{spkcls}}\mathcal{L}_{\mathrm{spkcls}}^{G},
+\end{equation}
+while $C_{\text{sp}}$ is trained with $\mathcal{L}_{\mathrm{spkcls}}^{C}$ and then held fixed for the generator update.
+This branch is reported separately in the system table and results because it changes the speaker-side supervision path rather than adding the contrastive term above.
+In the main configuration, the StarGANv2-VC-style weights are $\lambda_{\mathrm{adv}}=2$, $\lambda_{\mathrm{sty}}=1$, $\lambda_{\mathrm{ds}}=1$, $\lambda_{\mathrm{cyc}}=5$, $\lambda_{\mathrm{norm}}=1$, $\lambda_{\mathrm{asr}}=10$, $\lambda_{\mathrm{F0}}=5$, $\lambda_{\mathrm{F0sty}}=0.1$, and $\lambda_{\mathrm{cls}}^{G}=0.5$; the discriminator uses $\lambda_{\mathrm{reg}}=1$, $\lambda_{\mathrm{cls}}^{D}=0.1$, and $\lambda_{\mathrm{con}}=10$.
+
+\begin{table}[t]
+\caption{Training objective components to report in the final implementation description.}
+\label{tab:losses}
+\centering
+\footnotesize
+\begin{tabular}{@{}p{0.28\linewidth}p{0.46\linewidth}p{0.17\linewidth}@{}}
+\toprule
+Term & Purpose & Status \\
+\midrule
+$\mathcal{L}_{\mathrm{adv}}$ & Target-domain realism & Backbone \\
+$\mathcal{L}_{\mathrm{sty}}$ & Style reconstruction & Backbone/abl. \\
+$\mathcal{L}_{\mathrm{ds}}$ & Style diversity & Backbone \\
+$\mathcal{L}_{\mathrm{cyc}}$ & Reconstruction consistency & Backbone \\
+$\mathcal{L}_{\mathrm{norm}}$ & Energy/norm consistency & Backbone \\
+$\mathcal{L}_{\mathrm{asr}}$ & Content preservation & Backbone \\
+$\mathcal{L}_{\mathrm{F0}}$ & Pitch/prosody consistency & Backbone \\
+$\mathcal{L}_{\mathrm{F0sty}}$ & Reference F0 style consistency & Backbone \\
+$\mathcal{L}_{\mathrm{advcls}}$ & Domain/source classification & Backbone \\
+$\mathcal{L}_{\mathrm{R1}},\mathcal{L}_{\mathrm{bCR}}$ & Discriminator regularization & Backbone \\
+$\mathcal{L}_{\mathrm{int}}$ & Native intensity ranking/control & Proposed \\
+$\mathcal{L}_{\mathrm{spk}}$ & Speaker contrastive signal & Ablation \\
+$\mathcal{L}_{\mathrm{spkcls}}^{C},\mathcal{L}_{\mathrm{spkcls}}^{G}$ & Speaker classifier pretraining and source-speaker preservation & Ablation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Inference and Intensity Control}
+At inference, each model is evaluated over the same alpha set whenever possible.
+For native intensity, source and reference style codes are first extracted as
+\begin{equation}
+s_{\mathrm{src}}=E_{\text{s}}(x_{\mathrm{src}},y_{\mathrm{neu}}),\qquad
+s_{\mathrm{ref}}=E_{\text{s}}(x_{\mathrm{ref}},e_{\mathrm{ref}}).
+\end{equation}
+Then, for inferred-intensity StarGANv2-VC, the alpha sweep is implemented as a post-hoc interpolation between the two style codes, with the generator receiving the interpolated style code as input:
+\begin{equation}
+s_{\alpha}=(1-\alpha)s_{\mathrm{src}}+\alpha s_{\mathrm{ref}},
+\qquad
+\hat{x}_{\alpha}=G_{\theta}(x_{\mathrm{src}},s_{\alpha},F0(x_{\mathrm{src}})).
+\end{equation}
+For native-intensity inference: we search over $\beta\in[0,1]$ to select the style mixture whose normalized rank intensity is closest to the requested $\alpha$,
+\begin{equation}
+\beta^{*}
+=
+\arg\min_{\beta}
+\left|
+\frac{r_e((1-\beta)s_{\mathrm{src}}+\beta s_{\mathrm{ref}})-r_e(s_{\mathrm{src}})}
+{r_e(s_{\mathrm{ref}})-r_e(s_{\mathrm{src}})+\epsilon}
+-\alpha
+\right|.
+\end{equation}
+and then compte the generated utterance :
+\begin{equation}
+\hat{x}_{\alpha}=G_{\theta}(x_{\mathrm{src}},(1-\beta^{*})s_{\mathrm{src}}+\beta^{*} s_{\mathrm{ref}},F0(x_{\mathrm{src}})).
+\end{equation}
+
+\section{Experimental Design}
+\label{sec:experimental-design}
+
+\subsection{Datasets}
+We use two datasets: ESD \cite{zhou2021seen} and CREMA-D \cite{cao2014cremad}.
+ESD contains parallel recordings of 10 english speakers and five emotion categories (neutral, angry, happy, sad, and surprised) with the same text prompts across speakers and emotions. We train each model on 16500 samples, and use he remaining 500 samples as a validation set.
+During evaluation, we prepare pairs of neutral utterances as sources and emotional utterances as references with same-speaker same-text (SSST) and different-speaker same-text (DSST) settings \cite{zhou2021seen}. The SSST evaluation set contains 800 conversions per alpha, built from 10 speakers, 20 text prompts, and four target emotions, with 200 conversions per target emotion and 80 conversions per speaker.
+The DSST evaluation set contains 1080 conversions per alpha, built from 10 source speakers, three text prompts, four target emotions, and nine reference speakers per source-speaker/text/emotion combination, giving 270 conversions per target emotion and 108 conversions per source speaker.
+
+CREMA-D dataset contains crowd-sourced emotional audio-visual actor recordings with 4 categorical emotion labels (neutral, angry, happy, sad) \cite{cao2014cremad}. During evaluation, we use neutral source utterances and emotional same-speaker/same-text references for angry, happy, and sad targets.
+The evaluation set contains 792 conversions  built from 24 speakers, 11 text prompts, and three target emotions, with 264 conversions per target emotion and 33 conversions per speaker.
+
+All audio is converted to 24 kHz mel-spectrograms using the same preprocessing as the StarGANv2-VC backbone: $n_{\mathrm{fft}}=2048$, window length $1200$, and hop length $300$. We evaluate each model with the following values of $\alpha$: $\mathcal{A}=\{0.0,0.2,0.4,0.6,0.8,1.0\}$, so the full  evaluation contains 4800 ESD SSST generated samples, 6480 ESD DSST generated samples, and 4752 generated samples for each CREMA-D condition.
+
+\begin{table*}[t]
+\caption{Dataset and evaluation summary for the alpha sweeps.}
+\label{tab:datasets}
+\centering
+\footnotesize
+\begin{tabular}{@{}llllll@{}}
+\toprule
+Dataset & Condition & Pairing & Speakers & Targets & Samples/alpha \\
+\midrule
+ESD & SSST & Same spk., same text & 10 & A/H/S/Sur. & 800 \\
+ESD & DSST & Diff. spk., same text & 10 src., 9 refs/src & A/H/S/Sur. & 1080 \\
+CREMA-D & SSST & Same spk., same text & 24 & A/H/S & 792 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Baseline models}
+We run out experiments on the following models:
+\begin{itemize}
+    \item Native-intensity emotional voice conversion StarGANv2-VC (\textbf{StarGANv2-NEVC}), which is the main proposed model.
+    \item Inferred-intensity StarGANv2-VC (\textbf{StarGANv2-IEVC}), which is the post-hoc interpolation baseline.
+    \item CycleGAN spectrum-conversion baseline, evaluated with inferred intensity (\textbf{CycleGAN-IEVC}).
+    \item Speaker-contrastive ablation (\textbf{StarGANv2-NEVC + Speaker-Contrastive}).
+    \item Native-intensity + speaker-classifier ablation (\textbf{StarGANv2-NEVC + Speaker-Classifier}).
+\end{itemize}
+
+
+\subsection{Evaluation Metrics}
+For each generated sample, we evaluate the conversion along the same axes used to define the frontier: target-emotion transfer, source-speaker preservation. For emotion transfer, we record the following metrics: emotion accuracy ($\text{ACC}_\text{emo}$), emotion confidence ($\text{CONF}_\text{emo}$), and emotion cosine similarity between generated and reference emotion embeddings ($\text{SIM}_\text{emo}$). Emotion accuracy records whether a pretrained emotion classifier predicts the requested target emotion for the generated utterance, while emotion confidence records the classifier posterior assigned to that target class.
+Emotion-reference cosine measures the similarity between generated and reference emotion embeddings, and is used as the main continuous emotion-side score in several frontier plots. These metrics are obtained using a pretrained frozen emotion classifier WavLM-base model \cite{chen2022wavlm}.
+
+For speaker preservation, we extract speaker embeddings using a pretrained ECAPA-TDNN model \cite{desplanques2020ecapatdnn}, then compute cosine similarity between generated  and source speaker embeddings ($\text{SIM}_\text{spk-src}$). We also record generated-reference speaker cosine similarity ($\text{SIM}_\text{spk-ref}$) and Mel Cepstral Distortion (MCD).
+
+We also evaluate the proposed model tradeoff with subjective Mean Opinion Scores (MOS) metrics for naturalness, perceived emotion similarity, and perceived speaker similarity.
+Naturalness measures whether the generated sample sounds artifact-free and plausible, perceived emotion similarity measures whether listeners hear the intended target emotion, and perceived speaker similarity measures whether listeners perceive the generated utterance as preserving the source speaker.
+These subjective scores are used to check whether the automatic frontier corresponds to human perception rather than replacing the automatic analysis.
+We run a crowd-sourced evaluation with 20 raters, where each rater listens to a random subset of 100 generated samples uniformly distributed accross alpha values, and rates them on a 5-point scalre for each of the three subjective metrics.
+

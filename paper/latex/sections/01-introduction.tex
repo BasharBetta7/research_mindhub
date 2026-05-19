@@ -1,0 +1,36 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\PARstart{E}{motional} voice conversion (EVC) seeks to transform the perceived emotion of an utterance while preserving linguistic content and speaker identity.
+This dual objective creates a central evaluation tension: a system can appear successful because target-emotion metrics improve, while speaker identity quietly drifts.
+The standard EVC goal is therefore not only to make converted speech sound emotional, but to do so with minimum degradation of speaker characteristics. \cite{yang2022overview,zhou2022evctheoryesd}.
+
+Most EVC evaluations report emotion-side and speaker-side measurements as separate aggregate scores.
+That practice is useful, but it does not reveal how the two objectives interact when target-emotion strength is actively varied.
+In particular, a single high-intensity operating point cannot show whether a method preserves speaker identity across weaker and stronger emotional settings.
+This paper studies the hypothesis that emotional intensity exposes an underdiscussed speaker--emotion frontier: as target emotion becomes stronger, speaker preservation may remain stable, degrade smoothly, or collapse depending on the model, dataset, and conversion condition.
+
+Instead of treating emotion accuracy and speaker similarity as independent numbers, we treat each intensity setting as an operating point.
+The curve traced by these operating points is the object of analysis.
+This framing makes the evaluation concrete: a method is characterized by the operating region it traces, the speaker-preservation cost of increasing emotion, and the dataset or conversion condition in which that frontier is observed.
+
+
+We frame this primarily as a measurement problem, with a model-side mechanism for tracing controllable operating points.
+The measurement contribution is an intensity-conditioned evaluation protocol that traces emotion-side metrics against speaker-side metrics across an intensity sweep.
+The modeling contribution is a native-intensity StarGANv2-VC-based architecture designed to represent target-emotion strength explicitly, not a claim that speaker--emotion disentanglement is solved.
+We additionally study speaker-related ablations, including speaker-contrastive and speaker-classifier variants, to test how speaker supervision reshapes the frontier.
+We compare this model family against two baselines: StarGANv2-VC with inferred intensity and a CycleGAN spectrum-conversion baseline.
+
+The main contributions of this work are:
+\begin{itemize}
+    \item An intensity-conditioned evaluation protocol for measuring the speaker--emotion frontier in EVC.
+    \item A native-intensity StarGANv2-VC-based architecture for tracing controllable emotional conversion operating points.
+    \item A comparison between native intensity, inferred-intensity StarGANv2-VC, and CycleGAN across ESD \cite{zhou2021seen} and CREMA-D \cite{cao2014cremad} datasets.
+\end{itemize}
+
+The remainder of this paper is organized as follows:
+Section~\ref{sec:related-work} reviews EVC, emotion-intensity control, speaker preservation, and the missing frontier-style evaluation.
+Section~\ref{sec:problem-formulation} defines inferred and native intensity sweeps and the proposed frontier measurement.
+Section~\ref{sec:proposed-model} describes the native-intensity model and speaker-related ablations.
+Section~\ref{sec:experimental-design} gives the datasets, baselines, metrics, and ablations.
+Sections~\ref{sec:results}--\ref{sec:limitations} present results, discussion, and limitations.
